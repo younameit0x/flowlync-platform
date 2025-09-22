@@ -100,7 +100,7 @@ export default function Dashboard() {
 
         {/* Next Steps */}
         <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-xl p-8 border border-blue-500/20">
-          <h2 className="text-2xl font-bold mb-4">What's Next?</h2>
+          <h2 className="text-2xl font-bold mb-4">What&apos;s Next?</h2>
           <div className="space-y-4">
             <div className="flex items-start space-x-3">
               <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-sm font-bold mt-1">1</div>
