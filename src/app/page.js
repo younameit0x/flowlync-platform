@@ -19,9 +19,9 @@ export default function Home() {
             <a href="#how-it-works" className="hover:text-blue-400 transition-colors">How It Works</a>
             <a href="#join" className="hover:text-blue-400 transition-colors">Join Us</a>
             {user ? (
-              <a href="/api/auth/logout" className="hover:text-blue-400 transition-colors">Logout</a>
+              <Link href="/api/auth/logout" className="hover:text-blue-400 transition-colors">Logout</Link>
             ) : (
-              <a href="/api/auth/login" className="hover:text-blue-400 transition-colors">Login</a>
+              <Link href="/api/auth/login" className="hover:text-blue-400 transition-colors">Login</Link>
             )}
           </nav>
         </div>
@@ -52,7 +52,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">Why I Built FlowLync</h2>
           <p className="text-xl text-gray-300 leading-relaxed">
-            As a former affiliate, I saw firsthand how slow payments, fake traffic, and lack of trust held everyone back. FlowLync is my answer—a platform built on transparency, speed, and real relationships. This is more than a product; it's a movement to restore trust and unlock growth for everyone in the ecosystem.
+            As a former affiliate, I saw firsthand how slow payments, fake traffic, and lack of trust held everyone back. FlowLync is my answer—a platform built on transparency, speed, and real relationships. This is more than a product; it&apos;s a movement to restore trust and unlock growth for everyone in the ecosystem.
           </p>
         </div>
       </section>
@@ -231,7 +231,7 @@ export default function Home() {
             </div>
             
             <div className="bg-gray-800 p-8 rounded-2xl">
-              <h3 className="text-xl font-bold mb-4">What does "vetted" mean?</h3>
+              <h3 className="text-xl font-bold mb-4">What does &quot;vetted&quot; mean?</h3>
               <p className="text-gray-300">
                 We manually review and verify every affiliate, casino, and launchpad before they join. Ongoing monitoring keeps the network clean.
               </p>
@@ -240,7 +240,7 @@ export default function Home() {
             <div className="bg-gray-800 p-8 rounded-2xl">
               <h3 className="text-xl font-bold mb-4">How do I join First Access?</h3>
               <p className="text-gray-300">
-                Just enter your email and name below. We'll reach out to select early members for feedback and collaboration.
+                Just enter your email and name below. We&apos;ll reach out to select early members for feedback and collaboration.
               </p>
             </div>
           </div>
@@ -296,7 +296,7 @@ export default function Home() {
                 </form>
                 
                 <div className="text-gray-400">
-                  Or <a href="/api/auth/login" className="text-blue-400 hover:text-blue-300 underline">sign in</a> if you already have an account
+                  Or <Link href="/api/auth/login" className="text-blue-400 hover:text-blue-300 underline">sign in</Link> if you already have an account
                 </div>
               </div>
             )}
