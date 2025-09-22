@@ -2,6 +2,7 @@
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Dashboard() {
   const { user, error, isLoading } = useUser();
@@ -37,9 +38,9 @@ export default function Dashboard() {
           </div>
           <div className="flex items-center space-x-4">
             <span className="text-gray-300">Welcome, {user.name || user.email}</span>
-            <a href="/api/auth/logout" className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors">
+            <Link href="/api/auth/logout" className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors">
               Logout
-            </a>
+            </Link>
           </div>
         </div>
       </header>
@@ -49,7 +50,7 @@ export default function Dashboard() {
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-4">Welcome to FlowLync!</h1>
           <p className="text-xl text-gray-300">
-            You're part of the first access group. We're building something amazing together.
+            You&apos;re part of the first access group. We&apos;re building something amazing together.
           </p>
         </div>
 
@@ -127,9 +128,9 @@ export default function Dashboard() {
 
         {/* Action Buttons */}
         <div className="mt-8 flex flex-col md:flex-row gap-4">
-          <a href="/" className="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg text-center transition-colors">
+          <Link href="/" className="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg text-center transition-colors">
             ← Back to Homepage
-          </a>
+          </Link>
           <button className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg transition-colors">
             Join Discord Community
           </button>

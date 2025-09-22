@@ -105,7 +105,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-6">The FlowLync Solution</h2>
           <p className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto">
-            We're creating a trust-based ecosystem powered by blockchain technology and transparent relationships.
+            We&apos;re creating a trust-based ecosystem powered by blockchain technology and transparent relationships.
           </p>
           
           {/* Ecosystem Diagram */}
@@ -259,7 +259,7 @@ export default function Home() {
             {user ? (
               <div className="space-y-4">
                 <div className="text-green-400 text-lg">
-                  ✅ Welcome, {user.name || user.email}! You're already logged in.
+                  ✅ Welcome, {user.name || user.email}! You&apos;re already logged in.
                 </div>
                 <Link href="/dashboard" className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-full font-semibold transition-all">
                   Access Dashboard

@@ -1,5 +1,6 @@
 'use client';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Link from 'next/link';
 
 export default function DebugPage() {
   const { user, error, isLoading } = useUser();
@@ -31,7 +32,7 @@ export default function DebugPage() {
       <div style={{ backgroundColor: '#cce5ff', padding: '15px', margin: '10px 0' }}>
         <h2>Auth0 Actions:</h2>
         <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
-          <a 
+          <Link 
             href="/api/auth/login" 
             style={{ 
               backgroundColor: '#007bff', 
@@ -44,8 +45,8 @@ export default function DebugPage() {
             }}
           >
             🔐 Login to Auth0
-          </a>
-          <a 
+          </Link>
+          <Link 
             href="/api/auth/logout" 
             style={{ 
               backgroundColor: '#dc3545', 
@@ -58,8 +59,8 @@ export default function DebugPage() {
             }}
           >
             🚪 Logout
-          </a>
-          <a 
+          </Link>
+          <Link 
             href="/api/auth/me" 
             style={{ 
               backgroundColor: '#28a745', 
@@ -72,8 +73,8 @@ export default function DebugPage() {
             }}
           >
             👤 View Profile API
-          </a>
-          <a 
+          </Link>
+          <Link 
             href="/" 
             style={{ 
               backgroundColor: '#6c757d', 
@@ -86,7 +87,7 @@ export default function DebugPage() {
             }}
           >
             🏠 Back to Home
-          </a>
+          </Link>
         </div>
       </div>
     </div>
