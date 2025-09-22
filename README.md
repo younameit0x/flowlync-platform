@@ -1,4 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## FlowLync Platform
+
+FlowLync is the trust protocol for performance marketing—where affiliates get paid instantly, casinos and launchpads access real, high-quality traffic, and everyone benefits from transparent, crypto-powered relationships.
+
+### Features
+- ✅ Integrated landing page with manifesto
+- ✅ Auth0 authentication
+- ✅ User dashboard
+- ✅ Responsive design
+- ✅ Production ready
+
+### Live Demo
+Visit the live platform at your Vercel deployment URL.
 
 ## Getting Started
 
