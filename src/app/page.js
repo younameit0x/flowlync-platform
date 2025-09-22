@@ -6,9 +6,9 @@ export default function Home() {
   const { user, error, isLoading } = useUser();
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-slate-50 text-gray-900">
       {/* Header */}
-      <header className="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+      <header className="fixed w-full z-50 bg-slate-50/95 backdrop-blur-sm border-b border-slate-300 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-gray-900">
             FlowLync
@@ -28,7 +28,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-6 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="pt-24 pb-16 px-6 bg-gradient-to-br from-blue-50 to-slate-100">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
             Unifying Affiliates, Casinos, and Launchpads in a <span className="text-gray-700">Trust-First Ecosystem</span>
@@ -48,7 +48,7 @@ export default function Home() {
       </section>
 
       {/* Why I Built FlowLync */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-gray-100">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8 text-gray-900">Why I Built FlowLync</h2>
           <p className="text-xl text-gray-600 leading-relaxed">
@@ -58,7 +58,7 @@ export default function Home() {
       </section>
 
       {/* How We Ensure Trust */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-gray-200">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8 text-gray-900">How We Ensure Trust</h2>
           <p className="text-xl text-gray-600 leading-relaxed">
@@ -68,7 +68,7 @@ export default function Home() {
       </section>
 
       {/* Problem Section */}
-      <section id="problem" className="py-20 px-6 bg-white">
+      <section id="problem" className="py-20 px-6 bg-gray-100">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">The Broken System</h2>
           <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
@@ -76,21 +76,21 @@ export default function Home() {
           </p>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all">
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl transition-all">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Fake Traffic</h3>
               <p className="text-gray-600">
                 Advertisers waste budgets on incentivized or bot traffic that never converts, while legitimate affiliates struggle to compete.
               </p>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all">
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl transition-all">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Slow Payments</h3>
               <p className="text-gray-600">
                 Affiliates wait weeks or months for payments, slowing their growth and preventing them from scaling successful campaigns.
               </p>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all">
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl transition-all">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Lack of Trust</h3>
               <p className="text-gray-600">
                 Both sides operate with skepticism—affiliates worry about shaving, advertisers worry about fake referrals.
@@ -101,7 +101,7 @@ export default function Home() {
       </section>
 
       {/* Solution Section */}
-      <section id="solution" className="py-20 px-6 bg-gray-50">
+      <section id="solution" className="py-20 px-6 bg-gray-200">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">The FlowLync Solution</h2>
           <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
@@ -159,7 +159,7 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 px-6 bg-white">
+      <section id="how-it-works" className="py-20 px-6 bg-gray-100">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">How FlowLync Works</h2>
           <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
@@ -211,33 +211,33 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-gray-200">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">Frequently Asked Questions</h2>
           
           <div className="space-y-8">
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300">
               <h3 className="text-xl font-bold mb-4 text-gray-900">Is FlowLync only for gambling?</h3>
               <p className="text-gray-600">
                 No. While we start with iGaming and crypto launchpads, our trust protocol can serve any industry that relies on performance marketing and real results.
               </p>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300">
               <h3 className="text-xl font-bold mb-4 text-gray-900">How are payments handled?</h3>
               <p className="text-gray-600">
                 We use crypto for instant, transparent payouts. Smart contracts and on-chain tracking ensure everyone gets paid fairly and fast.
               </p>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300">
               <h3 className="text-xl font-bold mb-4 text-gray-900">What does &quot;vetted&quot; mean?</h3>
               <p className="text-gray-600">
                 We manually review and verify every affiliate, casino, and launchpad before they join. Ongoing monitoring keeps the network clean.
               </p>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300">
               <h3 className="text-xl font-bold mb-4 text-gray-900">How do I join First Access?</h3>
               <p className="text-gray-600">
                 Just enter your email and name below. We&apos;ll reach out to select early members for feedback and collaboration.
@@ -248,9 +248,9 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="join" className="py-20 px-6 bg-gray-50">
+      <section id="join" className="py-20 px-6 bg-blue-50">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-white p-12 rounded-3xl shadow-xl border border-gray-200">
+          <div className="bg-gray-50 p-12 rounded-3xl shadow-xl border border-gray-300">
             <h2 className="text-4xl font-bold mb-6 text-gray-900">Join the FlowLync Revolution</h2>
             <p className="text-xl text-gray-600 mb-8">
               Be among the first to experience trust-based performance marketing
@@ -305,7 +305,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white py-12 px-6 border-t border-gray-200">
+      <footer className="bg-gray-200 py-12 px-6 border-t border-gray-400">
         <div className="max-w-6xl mx-auto text-center">
           <div className="text-2xl font-bold text-gray-900 mb-4">
             FlowLync
