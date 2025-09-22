@@ -14,14 +14,14 @@ export default function Home() {
             FlowLync
           </div>
           <nav className="hidden md:flex space-x-8">
-            <a href="#problem" className="text-gray-600 hover:text-gray-900 transition-colors">The Problem</a>
-            <a href="#solution" className="text-gray-600 hover:text-gray-900 transition-colors">The Solution</a>
-            <a href="#how-it-works" className="text-gray-600 hover:text-gray-900 transition-colors">How It Works</a>
-            <a href="#join" className="text-gray-600 hover:text-gray-900 transition-colors">Join Us</a>
+            <a href="#problem" className="text-gray-600 hover:text-gray-900 transition-all duration-300 hover:scale-105">The Problem</a>
+            <a href="#solution" className="text-gray-600 hover:text-gray-900 transition-all duration-300 hover:scale-105">The Solution</a>
+            <a href="#how-it-works" className="text-gray-600 hover:text-gray-900 transition-all duration-300 hover:scale-105">How It Works</a>
+            <a href="#join" className="text-gray-600 hover:text-gray-900 transition-all duration-300 hover:scale-105">Join Us</a>
             {user ? (
-              <Link href="/api/auth/logout" className="text-gray-600 hover:text-gray-900 transition-colors">Logout</Link>
+              <Link href="/api/auth/logout" className="text-gray-600 hover:text-gray-900 transition-all duration-300 hover:scale-105">Logout</Link>
             ) : (
-              <Link href="/api/auth/login" className="text-gray-600 hover:text-gray-900 transition-colors">Login</Link>
+              <Link href="/api/auth/login" className="text-gray-600 hover:text-gray-900 transition-all duration-300 hover:scale-105">Login</Link>
             )}
           </nav>
         </div>
@@ -31,16 +31,16 @@ export default function Home() {
       <section className="pt-24 pb-16 px-6 bg-gradient-to-br from-blue-50 to-slate-100">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
-            Unifying Affiliates, Casinos, and Launchpads in a <span className="text-gray-700">Trust-First Ecosystem</span>
+            Unifying Affiliates, Casinos, and Launchpads in a <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Trust-First Ecosystem</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto">
             FlowLync is the trust protocol for performance marketing—where affiliates get paid instantly, casinos and launchpads access real, high-quality traffic, and everyone benefits from transparent, crypto-powered relationships.
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="#join" className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
+            <a href="#join" className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 hover:shadow-xl duration-300">
               Get Early Access & Join the Inner Circle
             </a>
-            <a href="#solution" className="border-2 border-gray-900 text-gray-900 hover:bg-gray-50 px-8 py-4 rounded-full font-semibold transition-all">
+            <a href="#solution" className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">
               Learn More
             </a>
           </div>
@@ -76,21 +76,21 @@ export default function Home() {
           </p>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl transition-all">
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Fake Traffic</h3>
               <p className="text-gray-600">
                 Advertisers waste budgets on incentivized or bot traffic that never converts, while legitimate affiliates struggle to compete.
               </p>
             </div>
             
-            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl transition-all">
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Slow Payments</h3>
               <p className="text-gray-600">
                 Affiliates wait weeks or months for payments, slowing their growth and preventing them from scaling successful campaigns.
               </p>
             </div>
             
-            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl transition-all">
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Lack of Trust</h3>
               <p className="text-gray-600">
                 Both sides operate with skepticism—affiliates worry about shaving, advertisers worry about fake referrals.
@@ -167,8 +167,8 @@ export default function Home() {
           </p>
           
           <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg">
+            <div className="text-center group">
+              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
                 1
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">Apply & Get Vetted</h3>
@@ -177,8 +177,8 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg">
+            <div className="text-center group">
+              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
                 2
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">Form Partnerships</h3>
@@ -187,8 +187,8 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg">
+            <div className="text-center group">
+              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
                 3
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">Track Performance</h3>
@@ -197,8 +197,8 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg">
+            <div className="text-center group">
+              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
                 4
               </div>
               <h3 className="text-xl font-bold mb-4 text-gray-900">Get Paid Instantly</h3>
@@ -261,7 +261,7 @@ export default function Home() {
                 <div className="text-green-600 text-lg font-medium">
                   ✅ Welcome, {user.name || user.email}! You&apos;re already logged in.
                 </div>
-                <Link href="/dashboard" className="inline-block bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full font-semibold transition-all text-white shadow-lg hover:shadow-xl">
+                <Link href="/dashboard" className="inline-block bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full font-semibold transition-all text-white shadow-lg hover:shadow-xl hover:scale-105 duration-300">
                   Access Dashboard
                 </Link>
               </div>
@@ -289,7 +289,7 @@ export default function Home() {
                   </select>
                   <button 
                     type="submit" 
-                    className="w-full bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full font-semibold transition-all text-white shadow-lg hover:shadow-xl"
+                    className="w-full bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full font-semibold transition-all text-white shadow-lg hover:shadow-xl hover:scale-105 duration-300 animate-pulse hover:animate-none"
                   >
                     Get Early Access
                   </button>
