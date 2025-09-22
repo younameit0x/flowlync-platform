@@ -1,8 +1,10 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## FlowLync Platform
+# FlowLync Platform
 
-FlowLync is the trust protocol for performance marketing—where affiliates get paid instantly, casinos and launchpads access real, high-quality traffic, and everyone benefits from transparent, crypto-powered relationships.
+A modern platform for seamless workflow integration and collaboration.
+
+🚀 **Status**: Live with full-stack backend integration!
 
 ### Features
 - ✅ Integrated landing page with manifesto
