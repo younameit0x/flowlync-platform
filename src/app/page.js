@@ -6,41 +6,41 @@ export default function Home() {
   const { user, error, isLoading } = useUser();
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* Header */}
-      <header className="fixed w-full z-50 bg-gray-900/90 backdrop-blur-sm border-b border-gray-700">
+      <header className="fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+          <div className="text-2xl font-bold text-gray-900">
             FlowLync
           </div>
           <nav className="hidden md:flex space-x-8">
-            <a href="#problem" className="hover:text-blue-400 transition-colors">The Problem</a>
-            <a href="#solution" className="hover:text-blue-400 transition-colors">The Solution</a>
-            <a href="#how-it-works" className="hover:text-blue-400 transition-colors">How It Works</a>
-            <a href="#join" className="hover:text-blue-400 transition-colors">Join Us</a>
+            <a href="#problem" className="text-gray-600 hover:text-gray-900 transition-colors">The Problem</a>
+            <a href="#solution" className="text-gray-600 hover:text-gray-900 transition-colors">The Solution</a>
+            <a href="#how-it-works" className="text-gray-600 hover:text-gray-900 transition-colors">How It Works</a>
+            <a href="#join" className="text-gray-600 hover:text-gray-900 transition-colors">Join Us</a>
             {user ? (
-              <Link href="/api/auth/logout" className="hover:text-blue-400 transition-colors">Logout</Link>
+              <Link href="/api/auth/logout" className="text-gray-600 hover:text-gray-900 transition-colors">Logout</Link>
             ) : (
-              <Link href="/api/auth/login" className="hover:text-blue-400 transition-colors">Login</Link>
+              <Link href="/api/auth/login" className="text-gray-600 hover:text-gray-900 transition-colors">Login</Link>
             )}
           </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-6">
+      <section className="pt-24 pb-16 px-6 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            Unifying Affiliates, Casinos, and Launchpads in a <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Trust-First Ecosystem</span>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
+            Unifying Affiliates, Casinos, and Launchpads in a <span className="text-gray-700">Trust-First Ecosystem</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto">
             FlowLync is the trust protocol for performance marketing—where affiliates get paid instantly, casinos and launchpads access real, high-quality traffic, and everyone benefits from transparent, crypto-powered relationships.
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="#join" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105">
+            <a href="#join" className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
               Get Early Access & Join the Inner Circle
             </a>
-            <a href="#solution" className="border-2 border-blue-500 hover:bg-blue-500/10 px-8 py-4 rounded-full font-semibold transition-all">
+            <a href="#solution" className="border-2 border-gray-900 text-gray-900 hover:bg-gray-50 px-8 py-4 rounded-full font-semibold transition-all">
               Learn More
             </a>
           </div>
@@ -48,51 +48,51 @@ export default function Home() {
       </section>
 
       {/* Why I Built FlowLync */}
-      <section className="py-20 px-6 bg-gray-800/30">
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8">Why I Built FlowLync</h2>
-          <p className="text-xl text-gray-300 leading-relaxed">
+          <h2 className="text-4xl font-bold mb-8 text-gray-900">Why I Built FlowLync</h2>
+          <p className="text-xl text-gray-600 leading-relaxed">
             As a former affiliate, I saw firsthand how slow payments, fake traffic, and lack of trust held everyone back. FlowLync is my answer—a platform built on transparency, speed, and real relationships. This is more than a product; it&apos;s a movement to restore trust and unlock growth for everyone in the ecosystem.
           </p>
         </div>
       </section>
 
       {/* How We Ensure Trust */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8">How We Ensure Trust</h2>
-          <p className="text-xl text-gray-300 leading-relaxed">
+          <h2 className="text-4xl font-bold mb-8 text-gray-900">How We Ensure Trust</h2>
+          <p className="text-xl text-gray-600 leading-relaxed">
             Every member of FlowLync is carefully vetted. Affiliates must prove real, engaged audiences. Casinos and launchpads are screened for reputation and compliance. Our process combines manual review, data analysis, and ongoing monitoring to keep the network clean and high-quality.
           </p>
         </div>
       </section>
 
       {/* Problem Section */}
-      <section id="problem" className="py-20 px-6 bg-gray-800/50">
+      <section id="problem" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-6">The Broken System</h2>
-          <p className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">The Broken System</h2>
+          <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
             Current affiliate marketing is plagued with inefficiencies, fraud, and mistrust that hurts everyone involved.
           </p>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-800 p-8 rounded-2xl hover:transform hover:scale-105 transition-all">
-              <h3 className="text-2xl font-bold mb-4">Fake Traffic</h3>
-              <p className="text-gray-300">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Fake Traffic</h3>
+              <p className="text-gray-600">
                 Advertisers waste budgets on incentivized or bot traffic that never converts, while legitimate affiliates struggle to compete.
               </p>
             </div>
             
-            <div className="bg-gray-800 p-8 rounded-2xl hover:transform hover:scale-105 transition-all">
-              <h3 className="text-2xl font-bold mb-4">Slow Payments</h3>
-              <p className="text-gray-300">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Slow Payments</h3>
+              <p className="text-gray-600">
                 Affiliates wait weeks or months for payments, slowing their growth and preventing them from scaling successful campaigns.
               </p>
             </div>
             
-            <div className="bg-gray-800 p-8 rounded-2xl hover:transform hover:scale-105 transition-all">
-              <h3 className="text-2xl font-bold mb-4">Lack of Trust</h3>
-              <p className="text-gray-300">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Lack of Trust</h3>
+              <p className="text-gray-600">
                 Both sides operate with skepticism—affiliates worry about shaving, advertisers worry about fake referrals.
               </p>
             </div>
@@ -101,56 +101,56 @@ export default function Home() {
       </section>
 
       {/* Solution Section */}
-      <section id="solution" className="py-20 px-6">
+      <section id="solution" className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-6">The FlowLync Solution</h2>
-          <p className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">The FlowLync Solution</h2>
+          <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
             We&apos;re creating a trust-based ecosystem powered by blockchain technology and transparent relationships.
           </p>
           
           {/* Ecosystem Diagram */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-16">
-            <div className="w-32 h-32 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-center">
+            <div className="w-32 h-32 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-center shadow-lg">
               <div>
-                <div className="font-bold">Affiliates</div>
+                <div className="font-bold text-white">Affiliates</div>
               </div>
             </div>
             
-            <div className="text-2xl text-blue-400 rotate-90 md:rotate-0">⟷</div>
+            <div className="text-2xl text-blue-600 rotate-90 md:rotate-0">⟷</div>
             
-            <div className="w-40 h-40 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center text-center">
+            <div className="w-40 h-40 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center text-center shadow-lg">
               <div>
-                <div className="font-bold text-lg">FlowLync</div>
+                <div className="font-bold text-lg text-white">FlowLync</div>
               </div>
             </div>
             
-            <div className="text-2xl text-blue-400 rotate-90 md:rotate-0">⟷</div>
+            <div className="text-2xl text-blue-600 rotate-90 md:rotate-0">⟷</div>
             
-            <div className="w-32 h-32 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-center">
+            <div className="w-32 h-32 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-center shadow-lg">
               <div>
-                <div className="font-bold">Casinos</div>
+                <div className="font-bold text-white">Casinos</div>
               </div>
             </div>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-800 p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold mb-4">Instant Crypto Payments</h3>
-              <p className="text-gray-300">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Instant Crypto Payments</h3>
+              <p className="text-gray-600">
                 Affiliates receive payments in near real-time, enabling them to reinvest and scale immediately.
               </p>
             </div>
             
-            <div className="bg-gray-800 p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold mb-4">Vetted Partnerships</h3>
-              <p className="text-gray-300">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Vetted Partnerships</h3>
+              <p className="text-gray-600">
                 Rigorous verification of all participants ensures quality and eliminates fraud on both sides.
               </p>
             </div>
             
-            <div className="bg-gray-800 p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold mb-4">Performance Analytics</h3>
-              <p className="text-gray-300">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Performance Analytics</h3>
+              <p className="text-gray-600">
                 Transparent tracking and reporting built on blockchain technology for undeniable proof of performance.
               </p>
             </div>
@@ -159,50 +159,50 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 px-6 bg-gray-800/50">
+      <section id="how-it-works" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-6">How FlowLync Works</h2>
-          <p className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">How FlowLync Works</h2>
+          <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
             Our process is designed for simplicity, transparency, and mutual benefit.
           </p>
           
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto">
+              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg">
                 1
               </div>
-              <h3 className="text-xl font-bold mb-4">Apply & Get Vetted</h3>
-              <p className="text-gray-300">
+              <h3 className="text-xl font-bold mb-4 text-gray-900">Apply & Get Vetted</h3>
+              <p className="text-gray-600">
                 Both affiliates and advertisers apply to join our ecosystem and undergo verification.
               </p>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto">
+              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg">
                 2
               </div>
-              <h3 className="text-xl font-bold mb-4">Form Partnerships</h3>
-              <p className="text-gray-300">
+              <h3 className="text-xl font-bold mb-4 text-gray-900">Form Partnerships</h3>
+              <p className="text-gray-600">
                 Connect with high-quality partners through our curated matching system.
               </p>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto">
+              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg">
                 3
               </div>
-              <h3 className="text-xl font-bold mb-4">Track Performance</h3>
-              <p className="text-gray-300">
+              <h3 className="text-xl font-bold mb-4 text-gray-900">Track Performance</h3>
+              <p className="text-gray-600">
                 Use our transparent dashboard to monitor campaigns in real-time.
               </p>
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto">
+              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto text-white shadow-lg">
                 4
               </div>
-              <h3 className="text-xl font-bold mb-4">Get Paid Instantly</h3>
-              <p className="text-gray-300">
+              <h3 className="text-xl font-bold mb-4 text-gray-900">Get Paid Instantly</h3>
+              <p className="text-gray-600">
                 Receive crypto payments immediately as your traffic converts.
               </p>
             </div>
@@ -211,35 +211,35 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">Frequently Asked Questions</h2>
           
           <div className="space-y-8">
-            <div className="bg-gray-800 p-8 rounded-2xl">
-              <h3 className="text-xl font-bold mb-4">Is FlowLync only for gambling?</h3>
-              <p className="text-gray-300">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <h3 className="text-xl font-bold mb-4 text-gray-900">Is FlowLync only for gambling?</h3>
+              <p className="text-gray-600">
                 No. While we start with iGaming and crypto launchpads, our trust protocol can serve any industry that relies on performance marketing and real results.
               </p>
             </div>
             
-            <div className="bg-gray-800 p-8 rounded-2xl">
-              <h3 className="text-xl font-bold mb-4">How are payments handled?</h3>
-              <p className="text-gray-300">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <h3 className="text-xl font-bold mb-4 text-gray-900">How are payments handled?</h3>
+              <p className="text-gray-600">
                 We use crypto for instant, transparent payouts. Smart contracts and on-chain tracking ensure everyone gets paid fairly and fast.
               </p>
             </div>
             
-            <div className="bg-gray-800 p-8 rounded-2xl">
-              <h3 className="text-xl font-bold mb-4">What does &quot;vetted&quot; mean?</h3>
-              <p className="text-gray-300">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <h3 className="text-xl font-bold mb-4 text-gray-900">What does &quot;vetted&quot; mean?</h3>
+              <p className="text-gray-600">
                 We manually review and verify every affiliate, casino, and launchpad before they join. Ongoing monitoring keeps the network clean.
               </p>
             </div>
             
-            <div className="bg-gray-800 p-8 rounded-2xl">
-              <h3 className="text-xl font-bold mb-4">How do I join First Access?</h3>
-              <p className="text-gray-300">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <h3 className="text-xl font-bold mb-4 text-gray-900">How do I join First Access?</h3>
+              <p className="text-gray-600">
                 Just enter your email and name below. We&apos;ll reach out to select early members for feedback and collaboration.
               </p>
             </div>
@@ -248,20 +248,20 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="join" className="py-20 px-6 bg-gray-800/50">
+      <section id="join" className="py-20 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gray-800 p-12 rounded-3xl border border-gray-700">
-            <h2 className="text-4xl font-bold mb-6">Join the FlowLync Revolution</h2>
-            <p className="text-xl text-gray-300 mb-8">
+          <div className="bg-white p-12 rounded-3xl shadow-xl border border-gray-200">
+            <h2 className="text-4xl font-bold mb-6 text-gray-900">Join the FlowLync Revolution</h2>
+            <p className="text-xl text-gray-600 mb-8">
               Be among the first to experience trust-based performance marketing
             </p>
             
             {user ? (
               <div className="space-y-4">
-                <div className="text-green-400 text-lg">
+                <div className="text-green-600 text-lg font-medium">
                   ✅ Welcome, {user.name || user.email}! You&apos;re already logged in.
                 </div>
-                <Link href="/dashboard" className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-full font-semibold transition-all">
+                <Link href="/dashboard" className="inline-block bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full font-semibold transition-all text-white shadow-lg hover:shadow-xl">
                   Access Dashboard
                 </Link>
               </div>
@@ -271,16 +271,16 @@ export default function Home() {
                   <input 
                     type="email" 
                     placeholder="Your Email" 
-                    className="w-full px-6 py-4 rounded-full bg-gray-700 border border-gray-600 focus:border-blue-500 focus:outline-none text-white"
+                    className="w-full px-6 py-4 rounded-full bg-gray-50 border border-gray-300 focus:border-gray-500 focus:outline-none text-gray-900"
                     required 
                   />
                   <input 
                     type="text" 
                     placeholder="Your Name" 
-                    className="w-full px-6 py-4 rounded-full bg-gray-700 border border-gray-600 focus:border-blue-500 focus:outline-none text-white"
+                    className="w-full px-6 py-4 rounded-full bg-gray-50 border border-gray-300 focus:border-gray-500 focus:outline-none text-gray-900"
                     required 
                   />
-                  <select className="w-full px-6 py-4 rounded-full bg-gray-700 border border-gray-600 focus:border-blue-500 focus:outline-none text-white" required>
+                  <select className="w-full px-6 py-4 rounded-full bg-gray-50 border border-gray-300 focus:border-gray-500 focus:outline-none text-gray-900" required>
                     <option value="">Select Your Role</option>
                     <option value="affiliate">Affiliate/Marketer</option>
                     <option value="casino">Casino Operator</option>
@@ -289,14 +289,14 @@ export default function Home() {
                   </select>
                   <button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-full font-semibold transition-all"
+                    className="w-full bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full font-semibold transition-all text-white shadow-lg hover:shadow-xl"
                   >
                     Get Early Access
                   </button>
                 </form>
                 
-                <div className="text-gray-400">
-                  Or <Link href="/api/auth/login" className="text-blue-400 hover:text-blue-300 underline">sign in</Link> if you already have an account
+                <div className="text-gray-600">
+                  Or <Link href="/api/auth/login" className="text-gray-900 hover:text-gray-700 underline">sign in</Link> if you already have an account
                 </div>
               </div>
             )}
@@ -305,12 +305,12 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 py-12 px-6 border-t border-gray-700">
+      <footer className="bg-white py-12 px-6 border-t border-gray-200">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent mb-4">
+          <div className="text-2xl font-bold text-gray-900 mb-4">
             FlowLync
           </div>
-          <p className="text-gray-400 mb-6">Building the future of performance marketing through trust and transparency</p>
+          <p className="text-gray-600 mb-6">Building the future of performance marketing through trust and transparency</p>
           <p className="text-gray-500">&copy; 2025 FlowLync. All rights reserved.</p>
         </div>
       </footer>
