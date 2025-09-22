@@ -1,9 +1,53 @@
 'use client';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
+  const [formData, setFormData] = useState({
+    email: '',
+    name: '',
+    role: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('/api/early-access', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitMessage('🎉 Success! You\'re on the early access list!');
+        setFormData({ email: '', name: '', role: '' });
+      } else {
+        setSubmitMessage(`❌ ${result.error || 'Failed to submit'}`);
+      }
+    } catch (error) {
+      setSubmitMessage('❌ Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 text-gray-900">
@@ -267,20 +311,35 @@ export default function Home() {
               </div>
             ) : (
               <div className="space-y-6">
-                <form className="space-y-4 max-w-md mx-auto">
+                <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
                   <input 
                     type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="Your Email" 
                     className="w-full px-6 py-4 rounded-full bg-gray-50 border border-gray-300 focus:border-gray-500 focus:outline-none text-gray-900"
                     required 
+                    disabled={isSubmitting}
                   />
                   <input 
                     type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     placeholder="Your Name" 
                     className="w-full px-6 py-4 rounded-full bg-gray-50 border border-gray-300 focus:border-gray-500 focus:outline-none text-gray-900"
                     required 
+                    disabled={isSubmitting}
                   />
-                  <select className="w-full px-6 py-4 rounded-full bg-gray-50 border border-gray-300 focus:border-gray-500 focus:outline-none text-gray-900" required>
+                  <select 
+                    name="role"
+                    value={formData.role}
+                    onChange={handleInputChange}
+                    className="w-full px-6 py-4 rounded-full bg-gray-50 border border-gray-300 focus:border-gray-500 focus:outline-none text-gray-900" 
+                    required
+                    disabled={isSubmitting}
+                  >
                     <option value="">Select Your Role</option>
                     <option value="affiliate">Affiliate/Marketer</option>
                     <option value="casino">Casino Operator</option>
@@ -289,10 +348,17 @@ export default function Home() {
                   </select>
                   <button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-gray-800 via-gray-900 to-blue-900 bg-size-200 animate-gradient-x hover:bg-gray-800 px-8 py-4 rounded-full font-semibold transition-all text-white shadow-lg hover:shadow-xl hover:scale-105 duration-300"
+                    className="w-full bg-gradient-to-r from-gray-800 via-gray-900 to-blue-900 bg-size-200 animate-gradient-x hover:bg-gray-800 px-8 py-4 rounded-full font-semibold transition-all text-white shadow-lg hover:shadow-xl hover:scale-105 duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={isSubmitting}
                   >
-                    Get Early Access
+                    {isSubmitting ? 'Submitting...' : 'Get Early Access'}
                   </button>
+                  
+                  {submitMessage && (
+                    <div className="text-center p-3 rounded-lg bg-gray-100 text-gray-900 font-medium">
+                      {submitMessage}
+                    </div>
+                  )}
                 </form>
                 
                 <div className="text-gray-600">
