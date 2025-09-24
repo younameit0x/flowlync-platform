@@ -18,6 +18,7 @@ const mockConversions = [
 ];
 
 export default function DemoDashboard() {
+  // Professional Demo Dashboard - Production Ready
   const [stats, setStats] = useState({
     totalClicks: 0,
     totalConversions: 0,
