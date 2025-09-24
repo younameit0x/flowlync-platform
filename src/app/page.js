@@ -583,6 +583,172 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Casino Partner Section */}
+      <section className="py-20 bg-gradient-to-br from-green-600 via-blue-600 to-purple-600">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Partner with <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-green-400">Premium Casinos</span>
+            </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Join elite casino operators who prioritize quality traffic and instant settlements. 
+              Experience the future of affiliate partnerships with faster payouts and better conversion rates.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            {/* Traffic Quality */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 text-center">
+              <div className="bg-gradient-to-r from-yellow-400 to-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Premium Traffic</h3>
+              <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2">
+                2.3x
+              </div>
+              <p className="text-white/80">
+                Higher conversion rates compared to traditional affiliate networks. Quality over quantity approach.
+              </p>
+            </div>
+
+            {/* Settlement Speed */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 text-center">
+              <div className="bg-gradient-to-r from-green-400 to-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Instant Settlements</h3>
+              <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-2">
+                &lt;5min
+              </div>
+              <p className="text-white/80">
+                Affiliate payments processed instantly through DeFi liquidity, eliminating 30-60 day delays.
+              </p>
+            </div>
+
+            {/* Revenue Growth */}
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 text-center">
+              <div className="bg-gradient-to-r from-purple-500 to-pink-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Revenue Growth</h3>
+              <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 mb-2">
+                +47%
+              </div>
+              <p className="text-white/80">
+                Average revenue increase for casinos using FlowLync's instant payment model.
+              </p>
+            </div>
+          </div>
+
+          {/* Casino Benefits */}
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-12 mb-12">
+            <h3 className="text-3xl font-bold text-white text-center mb-12">Why Elite Casinos Choose FlowLync</h3>
+            
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Left Column */}
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-gradient-to-r from-green-400 to-blue-500 p-2 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-white mb-2">Attract Top Affiliates</h4>
+                    <p className="text-white/80">Premium affiliates choose casinos offering instant payments over traditional 30-day models.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-2 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-white mb-2">Higher LTV Players</h4>
+                    <p className="text-white/80">Motivated affiliates drive higher-quality traffic with better long-term player value.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="bg-gradient-to-r from-yellow-400 to-orange-500 p-2 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-white mb-2">Reduced Churn</h4>
+                    <p className="text-white/80">Instant payment satisfaction leads to stronger, more loyal affiliate relationships.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column */}
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-2 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-white mb-2">Risk-Free Model</h4>
+                    <p className="text-white/80">FlowLync handles all liquidity risks. You pay only for delivered results.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="bg-gradient-to-r from-green-400 to-teal-500 p-2 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H9a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-white mb-2">Advanced Analytics</h4>
+                    <p className="text-white/80">Real-time tracking and attribution with blockchain-level transparency.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="bg-gradient-to-r from-red-500 to-pink-500 p-2 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-white mb-2">Competitive Edge</h4>
+                    <p className="text-white/80">First-mover advantage in DeFi-powered affiliate marketing innovation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Casino CTA */}
+          <div className="text-center">
+            <h3 className="text-3xl font-bold text-white mb-6">Ready to Transform Your Affiliate Program?</h3>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              Join forward-thinking casino operators who are revolutionizing affiliate partnerships with instant payments.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-bold px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105 duration-300">
+                Become a Casino Partner
+              </button>
+              <button className="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-bold px-8 py-4 rounded-full transition-all backdrop-blur-sm">
+                Download Partnership Deck
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-20 px-6 bg-gray-200">
         <div className="max-w-4xl mx-auto">
