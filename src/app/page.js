@@ -344,30 +344,37 @@ export default function Home() {
           
           <div className="space-y-8">
             <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300">
-              <h3 className="text-xl font-bold mb-4 text-gray-900">Is FlowLync only for gambling?</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900">How do instant payments work?</h3>
               <p className="text-gray-600">
-                No. While we start with iGaming and crypto launchpads, our trust protocol can serve any industry that relies on performance marketing and real results.
+                FlowLync uses DeFi liquidity protocols to bridge the cashflow gap. When affiliates generate conversions, our liquidity providers front the payments immediately while casino settlements happen in the background. Affiliates get paid in minutes, not months.
               </p>
             </div>
             
             <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300">
-              <h3 className="text-xl font-bold mb-4 text-gray-900">How are payments handled?</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900">What do liquidity providers earn?</h3>
               <p className="text-gray-600">
-                We use crypto for instant, transparent payouts. Smart contracts and on-chain tracking ensure everyone gets paid fairly and fast.
+                Liquidity providers earn yield from casino revenue streams. When casinos pay FlowLync for affiliate conversions, a portion flows back as returns to those who provided the upfront liquidity. It's like earning interest on casino cashflow.
               </p>
             </div>
             
             <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300">
-              <h3 className="text-xl font-bold mb-4 text-gray-900">What does &quot;vetted&quot; mean?</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900">Do I need to understand crypto?</h3>
               <p className="text-gray-600">
-                We manually review and verify every affiliate, casino, and launchpad before they join. Ongoing monitoring keeps the network clean.
+                No. While FlowLync uses blockchain technology behind the scenes, affiliates and casino partners interact through familiar USD-based interfaces. The crypto complexity is handled automatically.
               </p>
             </div>
             
             <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300">
-              <h3 className="text-xl font-bold mb-4 text-gray-900">How do I join First Access?</h3>
+              <h3 className="text-xl font-bold mb-4 text-gray-900">How is this different from traditional affiliate networks?</h3>
               <p className="text-gray-600">
-                Just enter your email and name below. We&apos;ll reach out to select early members for feedback and collaboration.
+                Traditional networks make affiliates wait 30-60 days for payments because they don't solve the cashflow problem—they just pass it along. FlowLync eliminates the wait by creating a liquidity marketplace where everyone benefits from faster capital flows.
+              </p>
+            </div>
+            
+            <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300">
+              <h3 className="text-xl font-bold mb-4 text-gray-900">How do I get started?</h3>
+              <p className="text-gray-600">
+                Join our early access program below. We're onboarding affiliates, casino partners, and liquidity providers in phases to ensure a smooth launch of this new cashflow model.
               </p>
             </div>
           </div>
