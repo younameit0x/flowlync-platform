@@ -1013,34 +1013,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section id="join" className="py-20 px-6 bg-blue-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gray-50 p-12 rounded-3xl shadow-xl border border-gray-300">
-            <h2 className="text-4xl font-bold mb-6 text-gray-900">Join the FlowLync Revolution</h2>
-            <p className="text-xl text-gray-600 mb-8">
-              Be among the first to experience trust-based performance marketing
+      {/* Enhanced CTA Section with Role-Based Signup */}
+      <section id="join" className="py-20 px-6 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+              Join the FlowLync <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Revolution</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Choose your path in the future of DeFi-powered affiliate marketing. Each role has unique benefits and earning opportunities.
             </p>
-            
-            {user ? (
-              <div className="space-y-4">
-                <div className="text-green-600 text-lg font-medium">
-                  ✅ Welcome, {user.name || user.email}! You&apos;re already logged in.
-                </div>
-                <Link href="/dashboard" className="inline-block bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full font-semibold transition-all text-white shadow-lg hover:shadow-xl hover:scale-105 duration-300">
-                  Access Dashboard
-                </Link>
+          </div>
+
+          {user ? (
+            <div className="text-center bg-white p-12 rounded-3xl shadow-xl border border-gray-200">
+              <div className="text-green-600 text-lg font-medium mb-6">
+                ✅ Welcome back, {user.name || user.email}! You're already logged in.
               </div>
-            ) : (
-              <div className="space-y-6">
-                <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+              <Link href="/dashboard" className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-full font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                Access Your Dashboard
+              </Link>
+            </div>
+          ) : (
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Affiliate Signup */}
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow duration-300">
+                <div className="text-center mb-6">
+                  <div className="bg-gradient-to-r from-green-400 to-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Affiliates & Marketers</h3>
+                  <p className="text-gray-600">Get paid instantly, scale faster</p>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">Instant payments (not 30-60 days)</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">Premium casino partnerships</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">Real-time analytics & tracking</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">Higher conversion rates</span>
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input type="hidden" name="role" value="affiliate" />
                   <input 
                     type="email" 
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Your Email" 
-                    className="w-full px-6 py-4 rounded-full bg-gray-50 border border-gray-300 focus:border-gray-500 focus:outline-none text-gray-900"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 focus:border-blue-500 focus:outline-none text-gray-900"
                     required 
                     disabled={isSubmitting}
                   />
@@ -1050,44 +1093,222 @@ export default function Home() {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Your Name" 
-                    className="w-full px-6 py-4 rounded-full bg-gray-50 border border-gray-300 focus:border-gray-500 focus:outline-none text-gray-900"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 focus:border-blue-500 focus:outline-none text-gray-900"
                     required 
                     disabled={isSubmitting}
                   />
                   <select 
-                    name="role"
-                    value={formData.role}
+                    name="experience"
                     onChange={handleInputChange}
-                    className="w-full px-6 py-4 rounded-full bg-gray-50 border border-gray-300 focus:border-gray-500 focus:outline-none text-gray-900" 
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 focus:border-blue-500 focus:outline-none text-gray-900"
                     required
                     disabled={isSubmitting}
                   >
-                    <option value="">Select Your Role</option>
-                    <option value="affiliate">Affiliate/Marketer</option>
-                    <option value="casino">Casino Operator</option>
-                    <option value="launchpad">Crypto Launchpad</option>
-                    <option value="other">Other</option>
+                    <option value="">Experience Level</option>
+                    <option value="beginner">New to affiliate marketing</option>
+                    <option value="intermediate">1-3 years experience</option>
+                    <option value="expert">3+ years, $100K+ annual</option>
                   </select>
                   <button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-gray-800 via-gray-900 to-blue-900 bg-size-200 animate-gradient-x hover:bg-gray-800 px-8 py-4 rounded-full font-semibold transition-all text-white shadow-lg hover:shadow-xl hover:scale-105 duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Submitting...' : 'Get Early Access'}
+                    {isSubmitting ? 'Joining...' : 'Join as Affiliate'}
                   </button>
-                  
-                  {submitMessage && (
-                    <div className="text-center p-3 rounded-lg bg-gray-100 text-gray-900 font-medium">
-                      {submitMessage}
-                    </div>
-                  )}
                 </form>
-                
-                <div className="text-gray-600">
-                  Or <Link href="/api/auth/login" className="text-gray-900 hover:text-gray-700 underline">sign in</Link> if you already have an account
-                </div>
+
+                {submitMessage && formData.role === 'affiliate' && (
+                  <div className="mt-4 p-3 rounded-lg bg-green-50 border border-green-200 text-green-800 text-sm">
+                    {submitMessage}
+                  </div>
+                )}
               </div>
-            )}
+
+              {/* Casino Signup */}
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow duration-300">
+                <div className="text-center mb-6">
+                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Casino Partners</h3>
+                  <p className="text-gray-600">Attract premium affiliates</p>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">Attract top-tier affiliates</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">Higher LTV players (+40%)</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">Risk-free liquidity model</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">Advanced attribution tracking</span>
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input type="hidden" name="role" value="casino" />
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Business Email" 
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 focus:border-purple-500 focus:outline-none text-gray-900"
+                    required 
+                    disabled={isSubmitting}
+                  />
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your Name" 
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 focus:border-purple-500 focus:outline-none text-gray-900"
+                    required 
+                    disabled={isSubmitting}
+                  />
+                  <input 
+                    type="text" 
+                    name="company"
+                    onChange={handleInputChange}
+                    placeholder="Casino/Brand Name" 
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 focus:border-purple-500 focus:outline-none text-gray-900"
+                    required 
+                    disabled={isSubmitting}
+                  />
+                  <button 
+                    type="submit" 
+                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Become a Partner'}
+                  </button>
+                </form>
+
+                {submitMessage && formData.role === 'casino' && (
+                  <div className="mt-4 p-3 rounded-lg bg-purple-50 border border-purple-200 text-purple-800 text-sm">
+                    {submitMessage}
+                  </div>
+                )}
+              </div>
+
+              {/* Liquidity Provider Signup */}
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow duration-300">
+                <div className="text-center mb-6">
+                  <div className="bg-gradient-to-r from-blue-500 to-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Liquidity Providers</h3>
+                  <p className="text-gray-600">Earn 8-15% annual yield</p>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">8-15% annual yield (APY)</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">Revenue-backed returns</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">Institutional-grade security</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">$10K+ minimum investment</span>
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input type="hidden" name="role" value="liquidity-provider" />
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Your Email" 
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 focus:border-blue-500 focus:outline-none text-gray-900"
+                    required 
+                    disabled={isSubmitting}
+                  />
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your Name" 
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 focus:border-blue-500 focus:outline-none text-gray-900"
+                    required 
+                    disabled={isSubmitting}
+                  />
+                  <select 
+                    name="investment_range"
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 focus:border-blue-500 focus:outline-none text-gray-900"
+                    required
+                    disabled={isSubmitting}
+                  >
+                    <option value="">Investment Range</option>
+                    <option value="10k-50k">$10K - $50K</option>
+                    <option value="50k-250k">$50K - $250K</option>
+                    <option value="250k-1m">$250K - $1M</option>
+                    <option value="1m+">$1M+</option>
+                  </select>
+                  <button 
+                    type="submit" 
+                    className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Provide Liquidity'}
+                  </button>
+                </form>
+
+                {submitMessage && formData.role === 'liquidity-provider' && (
+                  <div className="mt-4 p-3 rounded-lg bg-blue-50 border border-blue-200 text-blue-800 text-sm">
+                    {submitMessage}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Universal Login Link */}
+          <div className="text-center mt-12">
+            <p className="text-gray-600 mb-4">Already have an account?</p>
+            <Link href="/api/auth/login" className="text-blue-600 hover:text-blue-700 font-semibold underline transition-colors">
+              Sign In to Your Dashboard
+            </Link>
           </div>
         </div>
       </section>
