@@ -99,7 +99,7 @@ export default function Dashboard() {
         </div>
 
         {/* Next Steps */}
-        <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-xl p-8 border border-blue-500/20">
+        <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-xl p-8 border border-blue-500/20 mb-8">
           <h2 className="text-2xl font-bold mb-4">What&apos;s Next?</h2>
           <div className="space-y-4">
             <div className="flex items-start space-x-3">
@@ -126,15 +126,118 @@ export default function Dashboard() {
           </div>
         </div>
 
+        {/* Professional Demo Section */}
+        <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 rounded-xl p-8 border border-green-500/20 mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-2xl font-bold mb-2 flex items-center">
+                <span className="mr-3">🚀</span>
+                FlowLync Affiliate Tracking Demo
+              </h2>
+              <p className="text-gray-300">
+                Experience our professional affiliate tracking system with real-time analytics
+              </p>
+            </div>
+            <div className="text-right">
+              <div className="text-sm text-green-400 font-semibold">✅ LIVE SYSTEM</div>
+              <div className="text-xs text-gray-400">Production Ready</div>
+            </div>
+          </div>
+
+          {/* Demo Features Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+              <div className="text-2xl mb-2">👆</div>
+              <h3 className="font-semibold text-blue-400">Click Tracking</h3>
+              <p className="text-sm text-gray-300">Real-time link click monitoring</p>
+            </div>
+            <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+              <div className="text-2xl mb-2">💰</div>
+              <h3 className="font-semibold text-green-400">Conversions</h3>
+              <p className="text-sm text-gray-300">Track conversion events & revenue</p>
+            </div>
+            <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+              <div className="text-2xl mb-2">📊</div>
+              <h3 className="font-semibold text-purple-400">Analytics</h3>
+              <p className="text-sm text-gray-300">Professional dashboard with gradients</p>
+            </div>
+            <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+              <div className="text-2xl mb-2">⚡</div>
+              <h3 className="font-semibold text-orange-400">Real-time</h3>
+              <p className="text-sm text-gray-300">Live updates every 5 seconds</p>
+            </div>
+          </div>
+
+          {/* Demo Actions */}
+          <div className="bg-gray-800/30 rounded-lg p-6 border border-gray-700">
+            <h3 className="text-lg font-semibold mb-4 text-center">🎯 Try the Complete Demo Flow</h3>
+            <div className="grid md:grid-cols-4 gap-4">
+              <Link 
+                href="/demo-dashboard"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                <div className="font-semibold">📊 Professional Dashboard</div>
+                <div className="text-xs opacity-90">Commercial-grade analytics</div>
+              </Link>
+              <Link 
+                href="/demo-link"
+                className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                <div className="font-semibold">🔗 Generate Link</div>
+                <div className="text-xs opacity-90">Create trackable affiliate links</div>
+              </Link>
+              <Link 
+                href="/demo-convert"
+                className="bg-gradient-to-r from-orange-600 to-pink-600 hover:from-orange-700 hover:to-pink-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                <div className="font-semibold">💰 Test Conversion</div>
+                <div className="text-xs opacity-90">Simulate conversion events</div>
+              </Link>
+              <Link 
+                href="/setup-db"
+                className="bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                <div className="font-semibold">⚙️ Setup Database</div>
+                <div className="text-xs opacity-90">Initialize demo tables</div>
+              </Link>
+            </div>
+            <div className="text-center mt-4">
+              <p className="text-sm text-gray-400">
+                🎨 <strong>Professional Design:</strong> Gradients, animations, and commercial-grade aesthetics matching premium SaaS platforms
+              </p>
+            </div>
+          </div>
+
+          {/* Value Proposition */}
+          <div className="mt-6 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-500/20">
+            <div className="text-center">
+              <h4 className="font-semibold text-blue-400 mb-2">💡 Why This Matters</h4>
+              <p className="text-sm text-gray-300">
+                This demo showcases FlowLync's affiliate tracking capabilities with a professional interface 
+                that matches commercial platforms like ClickFunnels and ConvertKit. Perfect for partner presentations!
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Action Buttons */}
         <div className="mt-8 flex flex-col md:flex-row gap-4">
-          <Link href="/" className="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg text-center transition-colors">
+          <Link 
+            href="/" 
+            className="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          >
             ← Back to Homepage
           </Link>
-          <button className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg transition-colors">
+          <Link
+            href="/demo-dashboard"
+            className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 px-6 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-semibold"
+          >
+            🚀 Try Professional Demo
+          </Link>
+          <button className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             Join Discord Community
           </button>
-          <button className="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg transition-colors">
+          <button className="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             Submit Feedback
           </button>
         </div>
