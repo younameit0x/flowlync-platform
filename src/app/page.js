@@ -138,20 +138,20 @@ export default function Home() {
           {/* Hero Text */}
           <div className="animate-fade-in-up animation-delay-200">
             <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6 leading-tight text-gray-900 drop-shadow-sm px-4 md:px-0">
-              Unifying Affiliates, Casinos, and Launchpads in a <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Trust-First Ecosystem</span>
+              Instant Affiliate Payments Powered by <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Crypto Liquidity</span>
             </h2>
             <p className="text-base md:text-xl text-gray-700 mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-sm px-4 md:px-0">
-              FlowLync is the trust protocol for performance marketing—where affiliates get paid instantly, casinos and launchpads access real, high-quality traffic, and everyone benefits from transparent, crypto-powered relationships.
+              FlowLync solves the affiliate payment delay problem through DeFi innovation. <strong>Crypto liquidity providers bridge cashflow gaps</strong>, enabling instant affiliate payments while earning yield from casino revenue streams. No more 30-60 day payment delays.
             </p>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
             <a href="#join" className="bg-gradient-to-r from-gray-800 via-gray-900 to-blue-900 bg-size-200 animate-gradient-x hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 hover:shadow-2xl duration-300 shadow-lg">
-              Get Early Access & Join the Inner Circle
+              Join the Liquidity Revolution
             </a>
             <a href="#solution" className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">
-              Learn More
+              See How DeFi Works
             </a>
           </div>
         </div>
@@ -169,48 +169,51 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8 text-gray-900">Why I Built FlowLync</h2>
           <p className="text-xl text-gray-600 leading-relaxed">
-            As a former affiliate, I saw firsthand how slow payments, fake traffic, and lack of trust held everyone back. FlowLync is my answer—a platform built on transparency, speed, and real relationships. This is more than a product; it&apos;s a movement to restore trust and unlock growth for everyone in the ecosystem.
+            As a former affiliate, I experienced the cashflow nightmare: <strong>waiting 30-60 days for payments</strong> while casinos sat on my earnings. I realized the solution wasn&apos;t just faster payments—it was <strong>eliminating the wait entirely through DeFi liquidity</strong>. FlowLync connects crypto liquidity providers who front affiliate payments and earn yield from casino revenue streams. It&apos;s not just affiliate marketing—it&apos;s financial innovation.
           </p>
         </div>
       </section>
 
-      {/* How We Ensure Trust */}
+      {/* How DeFi Liquidity Works */}
       <section className="py-20 px-6 bg-gray-200">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8 text-gray-900">How We Ensure Trust</h2>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Every member of FlowLync is carefully vetted. Affiliates must prove real, engaged audiences. Casinos and launchpads are screened for reputation and compliance. Our process combines manual review, data analysis, and ongoing monitoring to keep the network clean and high-quality.
+          <h2 className="text-4xl font-bold mb-8 text-gray-900">How DeFi Liquidity Works</h2>
+          <p className="text-xl text-gray-600 leading-relaxed mb-8">
+            <strong>Crypto liquidity providers</strong> stake capital to provide instant affiliate payments. When affiliates generate conversions, casinos pay FlowLync, which automatically distributes yield back to liquidity providers. It&apos;s a win-win: affiliates get paid instantly, liquidity providers earn consistent returns from casino revenue streams.
           </p>
+          <div className="text-2xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Affiliates ⟷ Liquidity Providers ⟷ Casinos
+          </div>
         </div>
       </section>
 
       {/* Problem Section */}
       <section id="problem" className="py-20 px-6 bg-gray-100">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">The Broken System</h2>
+          <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">The Cashflow Crisis</h2>
           <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-            Current affiliate marketing is plagued with inefficiencies, fraud, and mistrust that hurts everyone involved.
+            The affiliate industry is stuck in a <strong>30-60 day payment cycle</strong> that crushes growth and creates massive inefficiencies. The real problem isn&apos;t trust—it&apos;s cashflow.
           </p>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Fake Traffic</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Payment Delays</h3>
               <p className="text-gray-600">
-                Advertisers waste budgets on incentivized or bot traffic that never converts, while legitimate affiliates struggle to compete.
+                <strong>30-60 day payment cycles</strong> kill momentum. Affiliates can&apos;t reinvest winnings immediately, stunting campaign growth and preventing rapid scaling of successful funnels.
               </p>
             </div>
             
             <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Slow Payments</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Cashflow Gaps</h3>
               <p className="text-gray-600">
-                Affiliates wait weeks or months for payments, slowing their growth and preventing them from scaling successful campaigns.
+                Casinos hold affiliate earnings for months while affiliates struggle with cash flow. There&apos;s a massive <strong>liquidity opportunity</strong> being ignored.
               </p>
             </div>
             
             <div className="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Lack of Trust</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Missed Yield</h3>
               <p className="text-gray-600">
-                Both sides operate with skepticism—affiliates worry about shaving, advertisers worry about fake referrals.
+                Millions in casino revenue sits idle instead of generating yield for liquidity providers. It&apos;s a <strong>DeFi opportunity</strong> waiting to be unlocked.
               </p>
             </div>
           </div>
@@ -220,55 +223,59 @@ export default function Home() {
       {/* Solution Section */}
       <section id="solution" className="py-20 px-6 bg-gray-200">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">The FlowLync Solution</h2>
+          <h2 className="text-4xl font-bold text-center mb-6 text-gray-900">The DeFi Liquidity Solution</h2>
           <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-            We&apos;re creating a trust-based ecosystem powered by blockchain technology and transparent relationships.
+            FlowLync creates a <strong>three-way DeFi ecosystem</strong> where crypto liquidity providers bridge cashflow gaps, affiliates get instant payments, and everyone earns from casino revenue streams.
           </p>
           
-          {/* Ecosystem Diagram */}
+          {/* Three-Way Ecosystem Diagram */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-16">
-            <div className="w-32 h-32 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-center shadow-lg">
+            <div className="w-40 h-40 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-center shadow-xl">
               <div>
-                <div className="font-bold text-white">Affiliates</div>
+                <div className="font-bold text-white text-sm">AFFILIATES</div>
+                <div className="text-xs text-blue-100">Get Instant Payments</div>
               </div>
             </div>
             
-            <div className="text-2xl text-blue-600 rotate-90 md:rotate-0">⟷</div>
+            <div className="text-3xl text-blue-600 rotate-90 md:rotate-0 animate-pulse">💰</div>
             
-            <div className="w-40 h-40 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center text-center shadow-lg">
+            <div className="w-48 h-48 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 rounded-full flex items-center justify-center text-center shadow-xl border-4 border-white">
               <div>
-                <div className="font-bold text-lg text-white">FlowLync</div>
+                <div className="font-bold text-lg text-white">LIQUIDITY</div>
+                <div className="font-bold text-lg text-white">PROVIDERS</div>
+                <div className="text-xs text-green-100">Earn Yield from Casino Revenue</div>
               </div>
             </div>
             
-            <div className="text-2xl text-blue-600 rotate-90 md:rotate-0">⟷</div>
+            <div className="text-3xl text-green-600 rotate-90 md:rotate-0 animate-pulse">📈</div>
             
-            <div className="w-32 h-32 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-center shadow-lg">
+            <div className="w-40 h-40 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-center shadow-xl">
               <div>
-                <div className="font-bold text-white">Casinos</div>
+                <div className="font-bold text-white text-sm">CASINOS</div>
+                <div className="text-xs text-green-100">Access Quality Traffic</div>
               </div>
             </div>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Instant Crypto Payments</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">⚡ Instant Liquidity</h3>
               <p className="text-gray-600">
-                Affiliates receive payments in near real-time, enabling them to reinvest and scale immediately.
+                Crypto liquidity providers front affiliate payments immediately. No more 30-60 day waits—affiliates get paid within minutes of conversions.
               </p>
             </div>
             
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Vetted Partnerships</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">💎 Yield Generation</h3>
               <p className="text-gray-600">
-                Rigorous verification of all participants ensures quality and eliminates fraud on both sides.
+                Liquidity providers earn consistent yield from casino revenue streams. It&apos;s like lending with casino earnings as collateral—steady, predictable returns.
               </p>
             </div>
             
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Performance Analytics</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">🚀 Accelerated Growth</h3>
               <p className="text-gray-600">
-                Transparent tracking and reporting built on blockchain technology for undeniable proof of performance.
+                Instant payments mean affiliates can reinvest winnings immediately, scaling successful campaigns 10x faster than traditional networks.
               </p>
             </div>
           </div>
