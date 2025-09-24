@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 // FORCE DEPLOYMENT VERIFICATION - Ensure Vercel builds current code
-const FORCE_REBUILD_MARKER = "PROFESSIONAL_FEATURES_v2.0_" + Date.now();
+const FORCE_REBUILD_MARKER = "PROFESSIONAL_FEATURES_v2.1_CRITICAL_DEPLOYMENT_" + Date.now();
+console.log("🚀 FlowLync Professional Deployment:", FORCE_REBUILD_MARKER);
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
