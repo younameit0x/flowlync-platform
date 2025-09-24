@@ -5,7 +5,7 @@ import { useState, Suspense } from 'react';
 
 function DemoConvertContent() {
   const searchParams = useSearchParams();
-  const linkId = searchParams.get('linkId');
+  const linkId = searchParams.get('linkId') || 'demo-link-1';
   const [status, setStatus] = useState('idle');
 
   const handleConvert = async () => {
