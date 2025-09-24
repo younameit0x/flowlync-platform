@@ -2,10 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import "./globals.css";
 
-// FORCE DEPLOYMENT VERIFICATION - Ensure Vercel builds our professional features
-const DEPLOYMENT_MARKER = "PROFESSIONAL_FLOWLYNC_v2.0_" + new Date().getTime();
-console.log("🚀 FlowLync Professional Deployment:", DEPLOYMENT_MARKER);
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
