@@ -1,12 +1,32 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+// Mock data for demo purposes when Supabase isn't available
+const mockClicks = [
+  { id: 1, link_id: 'demo-link-1', timestamp: new Date().toISOString(), user_agent: 'Demo Browser', ip_address: '192.168.1.1' },
+  { id: 2, link_id: 'demo-link-2', timestamp: new Date(Date.now() - 3600000).toISOString(), user_agent: 'Mobile Demo', ip_address: '192.168.1.2' },
+  { id: 3, link_id: 'demo-link-1', timestamp: new Date(Date.now() - 7200000).toISOString(), user_agent: 'Demo Browser Pro', ip_address: '192.168.1.3' }
+];
+
+const mockConversions = [
+  { id: 1, link_id: 'demo-link-1', timestamp: new Date(Date.now() - 1800000).toISOString(), value: 25.00 },
+  { id: 2, link_id: 'demo-link-2', timestamp: new Date(Date.now() - 5400000).toISOString(), value: 50.00 }
+];
+
+// Try to create Supabase client, but gracefully handle missing env vars
+let supabase = null;
+try {
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    const { createClient } = require('@supabase/supabase-js');
+    supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    );
+  }
+} catch (error) {
+  console.log('Supabase not available, using mock data');
+}
 
 export default function DemoDashboard() {
   const [stats, setStats] = useState({
@@ -28,26 +48,31 @@ export default function DemoDashboard() {
 
   const fetchData = async () => {
     try {
-      // Fetch clicks
-      const { data: clicksData, error: clicksError } = await supabase
-        .from('demo_clicks')
-        .select('*')
-        .order('timestamp', { ascending: false })
-        .limit(50);
+      if (supabase) {
+        // Try to fetch from Supabase if available
+        const { data: clicksData, error: clicksError } = await supabase
+          .from('demo_clicks')
+          .select('*')
+          .order('timestamp', { ascending: false })
+          .limit(50);
 
-      // Fetch conversions
-      const { data: conversionsData, error: conversionsError } = await supabase
-        .from('demo_conversions')
-        .select('*')
-        .order('timestamp', { ascending: false })
-        .limit(50);
+        const { data: conversionsData, error: conversionsError } = await supabase
+          .from('demo_conversions')
+          .select('*')
+          .order('timestamp', { ascending: false })
+          .limit(50);
 
-      if (clicksError || conversionsError) {
-        throw new Error(clicksError?.message || conversionsError?.message);
+        if (clicksError || conversionsError) {
+          throw new Error(clicksError?.message || conversionsError?.message);
+        }
+
+        setClicks(clicksData || []);
+        setConversions(conversionsData || []);
+      } else {
+        // Use mock data when Supabase is not available
+        setClicks(mockClicks);
+        setConversions(mockConversions);
       }
-
-      setClicks(clicksData || []);
-      setConversions(conversionsData || []);
       
       // Calculate stats
       const totalClicks = clicksData?.length || 0;
