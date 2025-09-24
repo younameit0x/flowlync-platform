@@ -337,6 +337,95 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Liquidity Provider Section */}
+      <section className="py-20 px-6 bg-gradient-to-r from-green-50 to-blue-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6 text-gray-900">
+              💎 Earn Yield as a <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Liquidity Provider</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Bridge the affiliate cashflow gap and earn consistent returns from casino revenue streams. Your capital enables instant payments while generating steady yield.
+            </p>
+          </div>
+
+          {/* Stats Row */}
+          <div className="grid md:grid-cols-4 gap-6 mb-16">
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200">
+              <div className="text-3xl font-bold text-green-600 mb-2">8-15%</div>
+              <div className="text-gray-600">Annual Yield</div>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200">
+              <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
+              <div className="text-gray-600">Revenue Flow</div>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200">
+              <div className="text-3xl font-bold text-purple-600 mb-2">$10K+</div>
+              <div className="text-gray-600">Min. Position</div>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-200">
+              <div className="text-3xl font-bold text-orange-600 mb-2">Auto</div>
+              <div className="text-gray-600">Compounding</div>
+            </div>
+          </div>
+
+          {/* How It Works for Liquidity Providers */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center mb-6">
+                <span className="text-2xl">💰</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Stake Liquidity</h3>
+              <p className="text-gray-600">
+                Provide USDC/ETH to the liquidity pool. Your capital becomes available for instant affiliate payments while earning base yield from the pool.
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-6">
+                <span className="text-2xl">⚡</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Enable Payments</h3>
+              <p className="text-gray-600">
+                Your liquidity enables instant affiliate payments. When conversions happen, affiliates get paid immediately using pool funds.
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-green-500 rounded-lg flex items-center justify-center mb-6">
+                <span className="text-2xl">📈</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Earn Yield</h3>
+              <p className="text-gray-600">
+                When casinos pay FlowLync, yield flows back to liquidity providers. You earn from casino revenue streams - consistent, predictable returns.
+              </p>
+            </div>
+          </div>
+
+          {/* Yield Calculator Placeholder */}
+          <div className="bg-gray-900 p-8 md:p-12 rounded-3xl shadow-2xl text-white text-center">
+            <h3 className="text-3xl font-bold mb-6">Calculate Your Potential Yield</h3>
+            <p className="text-gray-300 mb-8 text-lg">
+              Interactive calculator coming soon! Enter your liquidity amount to see projected returns.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div>
+                <div className="text-2xl font-bold text-green-400">$50K → $4K-7.5K</div>
+                <div className="text-gray-300">Annual Returns</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-blue-400">$100K → $8K-15K</div>
+                <div className="text-gray-300">Annual Returns</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-purple-400">$250K → $20K-37K</div>
+                <div className="text-gray-300">Annual Returns</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-20 px-6 bg-gray-200">
         <div className="max-w-4xl mx-auto">
