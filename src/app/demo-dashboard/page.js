@@ -42,9 +42,9 @@ export default function DemoDashboard() {
       setClicks(mockClicks);
       setConversions(mockConversions);
       
-      // Calculate stats
-      const totalClicks = clicksData?.length || 0;
-      const totalConversions = conversionsData?.length || 0;
+      // Calculate stats from mock data
+      const totalClicks = mockClicks.length;
+      const totalConversions = mockConversions.length;
       const conversionRate = totalClicks > 0 ? ((totalConversions / totalClicks) * 100) : 0;
       const revenue = totalConversions * 50; // $50 per conversion
 
