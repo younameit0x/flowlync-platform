@@ -135,6 +135,10 @@ export default function Home() {
             <h1 className="text-5xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent drop-shadow-lg">
               FlowLync
             </h1>
+            {/* DEPLOYMENT TEST - THIS SHOULD BE VISIBLE ON LIVE SITE IF DEPLOYING CORRECTLY */}
+            <div className="inline-block bg-red-500 text-white px-6 py-2 rounded-full text-lg font-bold mb-4 shadow-lg animate-pulse">
+              🚨 DEPLOYMENT TEST - SEPTEMBER 24, 2025 🚨
+            </div>
             {/* DEPLOYMENT VERIFICATION BADGE */}
             <div className="inline-block bg-gradient-to-r from-green-500 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold mb-2 shadow-lg">
               ✅ Professional v2.0 • Parallax Active • {new Date().toLocaleDateString()}
