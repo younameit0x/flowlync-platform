@@ -6,6 +6,182 @@ import { useState, useEffect } from 'react';
 // Force fresh deployment timestamp
 const DEPLOYMENT_TIMESTAMP = Date.now();
 
+// Interactive Yield Calculator Component
+function YieldCalculator() {
+  const [investment, setInvestment] = useState(50000);
+  const [duration, setDuration] = useState(12);
+  const [riskLevel, setRiskLevel] = useState('moderate');
+
+  const calculateYield = () => {
+    const baseRates = {
+      conservative: { min: 0.08, max: 0.12 },
+      moderate: { min: 0.10, max: 0.15 },
+      aggressive: { min: 0.12, max: 0.18 }
+    };
+    
+    const rates = baseRates[riskLevel];
+    const minYield = investment * rates.min * (duration / 12);
+    const maxYield = investment * rates.max * (duration / 12);
+    const avgYield = (minYield + maxYield) / 2;
+    
+    return {
+      minYield: Math.round(minYield),
+      maxYield: Math.round(maxYield),
+      avgYield: Math.round(avgYield),
+      monthlyMin: Math.round(minYield / duration),
+      monthlyMax: Math.round(maxYield / duration),
+      monthlyAvg: Math.round(avgYield / duration)
+    };
+  };
+
+  const yields = calculateYield();
+
+  return (
+    <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-8 md:p-12 rounded-3xl shadow-2xl text-white">
+      <h3 className="text-3xl font-bold mb-6 text-center">Calculate Your Potential Yield</h3>
+      <p className="text-gray-300 mb-8 text-lg text-center">
+        Adjust the parameters below to see your projected returns from providing liquidity.
+      </p>
+      
+      <div className="grid md:grid-cols-2 gap-12">
+        {/* Controls */}
+        <div className="space-y-8">
+          {/* Investment Amount */}
+          <div>
+            <label className="block text-lg font-semibold mb-4">
+              Investment Amount: <span className="text-green-400">${investment.toLocaleString()}</span>
+            </label>
+            <input
+              type="range"
+              min="10000"
+              max="1000000"
+              step="10000"
+              value={investment}
+              onChange={(e) => setInvestment(parseInt(e.target.value))}
+              className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+            />
+            <div className="flex justify-between text-sm text-gray-400 mt-2">
+              <span>$10K</span>
+              <span>$1M</span>
+            </div>
+          </div>
+
+          {/* Duration */}
+          <div>
+            <label className="block text-lg font-semibold mb-4">
+              Duration: <span className="text-blue-400">{duration} months</span>
+            </label>
+            <input
+              type="range"
+              min="3"
+              max="60"
+              step="3"
+              value={duration}
+              onChange={(e) => setDuration(parseInt(e.target.value))}
+              className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+            />
+            <div className="flex justify-between text-sm text-gray-400 mt-2">
+              <span>3 months</span>
+              <span>5 years</span>
+            </div>
+          </div>
+
+          {/* Risk Level */}
+          <div>
+            <label className="block text-lg font-semibold mb-4">Risk Level</label>
+            <div className="grid grid-cols-3 gap-2">
+              {['conservative', 'moderate', 'aggressive'].map((level) => (
+                <button
+                  key={level}
+                  onClick={() => setRiskLevel(level)}
+                  className={`p-3 rounded-lg font-medium transition-all duration-300 ${
+                    riskLevel === level
+                      ? 'bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-lg'
+                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                  }`}
+                >
+                  {level.charAt(0).toUpperCase() + level.slice(1)}
+                </button>
+              ))}
+            </div>
+            <div className="text-sm text-gray-400 mt-2">
+              {riskLevel === 'conservative' && '8-12% APY - Lower risk, steady returns'}
+              {riskLevel === 'moderate' && '10-15% APY - Balanced risk/reward'}
+              {riskLevel === 'aggressive' && '12-18% APY - Higher risk, maximum yield'}
+            </div>
+          </div>
+        </div>
+
+        {/* Results */}
+        <div className="space-y-6">
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+            <h4 className="text-xl font-bold mb-4 text-center">Projected Returns</h4>
+            
+            {/* Total Returns */}
+            <div className="space-y-4 mb-6">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-300">Total Return Range:</span>
+                <span className="font-bold text-green-400">
+                  ${yields.minYield.toLocaleString()} - ${yields.maxYield.toLocaleString()}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-300">Expected Average:</span>
+                <span className="font-bold text-blue-400 text-xl">
+                  ${yields.avgYield.toLocaleString()}
+                </span>
+              </div>
+            </div>
+
+            {/* Monthly Breakdown */}
+            <div className="border-t border-white/20 pt-4">
+              <h5 className="font-semibold mb-3 text-center">Monthly Income</h5>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-gray-300">Monthly Range:</span>
+                  <span className="text-green-400">
+                    ${yields.monthlyMin.toLocaleString()} - ${yields.monthlyMax.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-300">Monthly Average:</span>
+                  <span className="text-blue-400 font-bold">
+                    ${yields.monthlyAvg.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Visual Progress Bar */}
+            <div className="mt-6">
+              <div className="text-sm text-gray-300 mb-2">Yield Potential</div>
+              <div className="w-full bg-gray-700 rounded-full h-4">
+                <div 
+                  className="bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full transition-all duration-500"
+                  style={{ width: `${Math.min((yields.avgYield / investment) * 100 * 5, 100)}%` }}
+                ></div>
+              </div>
+              <div className="text-xs text-gray-400 mt-1">
+                {((yields.avgYield / investment) * 100).toFixed(1)}% total return over {duration} months
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <button className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              Start Earning Yield
+            </button>
+            <p className="text-xs text-gray-400 mt-2">
+              * Projections based on historical casino revenue data
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const { user, error, isLoading } = useUser();
   const [formData, setFormData] = useState({
@@ -402,27 +578,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Yield Calculator Placeholder */}
-          <div className="bg-gray-900 p-8 md:p-12 rounded-3xl shadow-2xl text-white text-center">
-            <h3 className="text-3xl font-bold mb-6">Calculate Your Potential Yield</h3>
-            <p className="text-gray-300 mb-8 text-lg">
-              Interactive calculator coming soon! Enter your liquidity amount to see projected returns.
-            </p>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div>
-                <div className="text-2xl font-bold text-green-400">$50K → $4K-7.5K</div>
-                <div className="text-gray-300">Annual Returns</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-blue-400">$100K → $8K-15K</div>
-                <div className="text-gray-300">Annual Returns</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-purple-400">$250K → $20K-37K</div>
-                <div className="text-gray-300">Annual Returns</div>
-              </div>
-            </div>
-          </div>
+          {/* Interactive Yield Calculator */}
+          <YieldCalculator />
         </div>
       </section>
 
