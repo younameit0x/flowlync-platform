@@ -1,9 +1,9 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 
-export default function DemoConvert() {
+function DemoConvertContent() {
   const searchParams = useSearchParams();
   const linkId = searchParams.get('linkId');
   const [status, setStatus] = useState('idle');
@@ -62,5 +62,13 @@ export default function DemoConvert() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function DemoConvert() {
+  return (
+    <Suspense fallback={<div>Loading conversion demo...</div>}>
+      <DemoConvertContent />
+    </Suspense>
   );
 }
