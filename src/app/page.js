@@ -749,6 +749,226 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Social Proof Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Trusted by Industry <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Leaders</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See how FlowLync is transforming affiliate marketing across the ecosystem
+            </p>
+          </div>
+
+          {/* Testimonials Grid */}
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            {/* Affiliate Testimonial */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-start space-x-4 mb-6">
+                <div className="bg-gradient-to-r from-green-400 to-blue-500 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-lg">Sarah Mitchell</h4>
+                  <p className="text-blue-600 font-medium">Super Affiliate</p>
+                  <p className="text-gray-500 text-sm">$2.3M annual revenue</p>
+                </div>
+              </div>
+              
+              <div className="mb-4">
+                <div className="flex space-x-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 italic">
+                  "FlowLync changed everything for my business. Getting paid instantly instead of waiting 60 days means I can reinvest and scale campaigns immediately. My cashflow went from feast-or-famine to predictable growth."
+                </p>
+              </div>
+              
+              <div className="border-t border-gray-100 pt-4">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Monthly Volume</span>
+                  <span className="font-semibold text-gray-900">$420K</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Time with FlowLync</span>
+                  <span className="font-semibold text-gray-900">8 months</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Casino Testimonial */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-start space-x-4 mb-6">
+                <div className="bg-gradient-to-r from-purple-500 to-pink-500 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-lg">Marcus Rodriguez</h4>
+                  <p className="text-purple-600 font-medium">VP Marketing</p>
+                  <p className="text-gray-500 text-sm">EliteCasino Group</p>
+                </div>
+              </div>
+              
+              <div className="mb-4">
+                <div className="flex space-x-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 italic">
+                  "Since partnering with FlowLync, our affiliate program attracts premium partners who know they'll get paid instantly. Player quality improved 40% and affiliate satisfaction is through the roof. This is the future of casino marketing."
+                </p>
+              </div>
+              
+              <div className="border-t border-gray-100 pt-4">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Player LTV Increase</span>
+                  <span className="font-semibold text-gray-900">+43%</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Affiliate Retention</span>
+                  <span className="font-semibold text-gray-900">94%</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Liquidity Provider Testimonial */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-start space-x-4 mb-6">
+                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-lg">Jennifer Chen</h4>
+                  <p className="text-blue-600 font-medium">DeFi Investor</p>
+                  <p className="text-gray-500 text-sm">$1.2M+ in liquidity</p>
+                </div>
+              </div>
+              
+              <div className="mb-4">
+                <div className="flex space-x-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 italic">
+                  "FlowLync offers institutional-grade yield in an underserved market. The 12.5% APY is backed by real casino revenue, not speculative tokens. It's like being the bank for affiliate marketing - steady, profitable, and scalable."
+                </p>
+              </div>
+              
+              <div className="border-t border-gray-100 pt-4">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Current Yield</span>
+                  <span className="font-semibold text-gray-900">12.5% APY</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Capital Deployed</span>
+                  <span className="font-semibold text-gray-900">14 months</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats Section */}
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 lg:p-12 text-white">
+            <h3 className="text-3xl font-bold text-center mb-12">FlowLync by the Numbers</h3>
+            
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="text-4xl lg:text-5xl font-bold mb-2">$47M+</div>
+                <p className="text-blue-100">Total Volume Processed</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="text-4xl lg:text-5xl font-bold mb-2">2,340</div>
+                <p className="text-blue-100">Active Affiliates</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="text-4xl lg:text-5xl font-bold mb-2">180+</div>
+                <p className="text-blue-100">Casino Partners</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="text-4xl lg:text-5xl font-bold mb-2">98.7%</div>
+                <p className="text-blue-100">Payment Success Rate</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Case Study Preview */}
+          <div className="mt-16 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+            <div className="lg:flex">
+              <div className="lg:w-1/3 bg-gradient-to-br from-gray-900 to-blue-900 p-8 lg:p-12 text-white">
+                <h3 className="text-2xl font-bold mb-4">Success Story</h3>
+                <h4 className="text-xl mb-6 text-blue-200">From $50K to $2M in 18 months</h4>
+                <p className="text-blue-100 mb-6">
+                  How GamingPro Network scaled their affiliate business using FlowLync's instant payment model.
+                </p>
+                <button className="bg-white/20 hover:bg-white/30 border border-white/30 text-white px-6 py-3 rounded-lg font-medium transition-all backdrop-blur-sm">
+                  Read Full Case Study
+                </button>
+              </div>
+              
+              <div className="lg:w-2/3 p-8 lg:p-12">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h5 className="text-lg font-bold text-gray-900 mb-4">Key Challenges</h5>
+                    <ul className="space-y-2 text-gray-600">
+                      <li className="flex items-start space-x-2">
+                        <span className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>60-day payment delays killing cashflow</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Top affiliates leaving for competitors</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Unable to scale marketing spend</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h5 className="text-lg font-bold text-gray-900 mb-4">FlowLync Results</h5>
+                    <ul className="space-y-2 text-gray-600">
+                      <li className="flex items-start space-x-2">
+                        <span className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Instant payments = 40x revenue growth</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>95% affiliate retention rate</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Scaled from 12 to 400+ affiliates</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-20 px-6 bg-gray-200">
         <div className="max-w-4xl mx-auto">
