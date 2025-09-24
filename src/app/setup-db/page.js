@@ -84,13 +84,13 @@ export default function SetupDatabase() {
       )}
 
       <div style={{ marginTop: 24, padding: 16, background: '#fff3cd', borderRadius: 4, border: '1px solid #ffeaa7' }}>
-        <h4>If tables don't exist, follow these steps:</h4>
+        <h4>If tables don&apos;t exist, follow these steps:</h4>
         <ol>
           <li>Go to your Supabase dashboard</li>
           <li>Navigate to the SQL Editor</li>
           <li>Copy and paste the SQL from <code>setup-tables.sql</code></li>
           <li>Run the SQL queries</li>
-          <li>Come back and click "Check Database Setup" again</li>
+          <li>Come back and click &quot;Check Database Setup&quot; again</li>
         </ol>
       </div>
     </div>

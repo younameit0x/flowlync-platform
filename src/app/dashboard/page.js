@@ -213,7 +213,7 @@ export default function Dashboard() {
             <div className="text-center">
               <h4 className="font-semibold text-blue-400 mb-2">💡 Why This Matters</h4>
               <p className="text-sm text-gray-300">
-                This demo showcases FlowLync's affiliate tracking capabilities with a professional interface 
+                This demo showcases FlowLync&apos;s affiliate tracking capabilities with a professional interface 
                 that matches commercial platforms like ClickFunnels and ConvertKit. Perfect for partner presentations!
               </p>
             </div>
