@@ -3,6 +3,9 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
+// FORCE DEPLOYMENT VERIFICATION - Ensure Vercel builds current code
+const FORCE_REBUILD_MARKER = "PROFESSIONAL_FEATURES_v2.0_" + Date.now();
+
 export default function Home() {
   const { user, error, isLoading } = useUser();
   const [formData, setFormData] = useState({
@@ -132,6 +135,10 @@ export default function Home() {
             <h1 className="text-5xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent drop-shadow-lg">
               FlowLync
             </h1>
+            {/* DEPLOYMENT VERIFICATION BADGE */}
+            <div className="inline-block bg-gradient-to-r from-green-500 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold mb-2 shadow-lg">
+              ✅ Professional v2.0 • Parallax Active • {new Date().toLocaleDateString()}
+            </div>
             <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
           </div>
 
