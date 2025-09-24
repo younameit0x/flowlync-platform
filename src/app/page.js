@@ -1,7 +1,7 @@
 'use client';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
@@ -12,6 +12,13 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -52,7 +59,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 text-gray-900">
       {/* Header */}
-      <header className="fixed w-full z-50 bg-slate-50/95 backdrop-blur-sm border-b border-slate-300 shadow-sm">
+      <header className="fixed w-full z-50 bg-transparent backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-gray-900">
             FlowLync
@@ -71,22 +78,88 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 px-6 bg-gradient-to-br from-blue-50 to-slate-100">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
-            Unifying Affiliates, Casinos, and Launchpads in a <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Trust-First Ecosystem</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto">
-            FlowLync is the trust protocol for performance marketing—where affiliates get paid instantly, casinos and launchpads access real, high-quality traffic, and everyone benefits from transparent, crypto-powered relationships.
-          </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="#join" className="bg-gradient-to-r from-gray-800 via-gray-900 to-blue-900 bg-size-200 animate-gradient-x hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 hover:shadow-xl duration-300">
+      {/* Parallax Hero Header */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Layer - Slowest movement */}
+        <div
+          className="absolute inset-0 parallax-bg"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`,
+            background: `
+              radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+              linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%)
+            `
+          }}
+        >
+          {/* Geometric Patterns */}
+          <div className="absolute inset-0 opacity-10">
+            <svg width="100%" height="100%" className="absolute inset-0">
+              <defs>
+                <pattern id="geometric" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                  <circle cx="50" cy="50" r="2" fill="#3b82f6" opacity="0.3"/>
+                  <rect x="20" y="20" width="4" height="4" fill="#3b82f6" opacity="0.2"/>
+                  <rect x="80" y="80" width="6" height="6" fill="#3b82f6" opacity="0.1"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#geometric)"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* Middle Layer - Medium movement */}
+        <div
+          className="absolute inset-0 parallax-middle"
+          style={{
+            transform: `translateY(${scrollY * 0.3}px)`,
+          }}
+        >
+          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-purple-500/10 rounded-full blur-xl"></div>
+          <div className="absolute bottom-32 left-1/4 w-40 h-40 bg-blue-400/5 rounded-full blur-2xl"></div>
+        </div>
+
+        {/* Content Layer - Fastest movement */}
+        <div
+          className="relative z-10 text-center px-6 max-w-6xl mx-auto parallax-content"
+          style={{
+            transform: `translateY(${scrollY * -0.2}px)`,
+          }}
+        >
+          {/* FlowLync Branding */}
+          <div className="mb-6 md:mb-8 animate-fade-in-up">
+            <h1 className="text-5xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent drop-shadow-lg">
+              FlowLync
+            </h1>
+            <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+          </div>
+
+          {/* Hero Text */}
+          <div className="animate-fade-in-up animation-delay-200">
+            <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6 leading-tight text-gray-900 drop-shadow-sm px-4 md:px-0">
+              Unifying Affiliates, Casinos, and Launchpads in a <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Trust-First Ecosystem</span>
+            </h2>
+            <p className="text-base md:text-xl text-gray-700 mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-sm px-4 md:px-0">
+              FlowLync is the trust protocol for performance marketing—where affiliates get paid instantly, casinos and launchpads access real, high-quality traffic, and everyone benefits from transparent, crypto-powered relationships.
+            </p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col md:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
+            <a href="#join" className="bg-gradient-to-r from-gray-800 via-gray-900 to-blue-900 bg-size-200 animate-gradient-x hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 hover:shadow-2xl duration-300 shadow-lg">
               Get Early Access & Join the Inner Circle
             </a>
             <a href="#solution" className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">
               Learn More
             </a>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
