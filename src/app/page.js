@@ -3,6 +3,9 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
+// Force fresh deployment timestamp
+const DEPLOYMENT_TIMESTAMP = Date.now();
+
 export default function Home() {
   const { user, error, isLoading } = useUser();
   const [formData, setFormData] = useState({
