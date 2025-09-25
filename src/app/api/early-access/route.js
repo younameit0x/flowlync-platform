@@ -1,5 +1,6 @@
 // Mock API for early access signups (working version)
 // TODO: Replace with real Supabase once environment variables are configured
+// Force deploy: 2025-01-27 14:30 UTC
 
 export async function POST(request) {
   try {
