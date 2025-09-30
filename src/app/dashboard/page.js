@@ -126,23 +126,110 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Professional Demo Section */}
-        <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 rounded-xl p-8 border border-green-500/20 mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-2xl font-bold mb-2 flex items-center">
-                <span className="mr-3">🚀</span>
-                FlowLync Affiliate Tracking Demo
-              </h2>
-              <p className="text-gray-300">
-                Experience our professional affiliate tracking system with real-time analytics
-              </p>
+          {/* Smart Matching AI Section */}
+          <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-8 border border-purple-500/20 mb-8">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-2xl font-bold mb-2 flex items-center">
+                  <span className="mr-3">🤖</span>
+                  Smart Matching AI
+                </h2>
+                <p className="text-gray-300">
+                  AI-powered affiliate-casino pairing recommendations tailored to your preferences
+                </p>
+              </div>
+              <div className="text-right">
+                <div className="text-sm text-purple-400 font-semibold">🧠 AI POWERED</div>
+                <div className="text-xs text-gray-400">Personalized Matches</div>
+              </div>
             </div>
-            <div className="text-right">
-              <div className="text-sm text-green-400 font-semibold">✅ LIVE SYSTEM</div>
-              <div className="text-xs text-gray-400">Production Ready</div>
+
+            {/* Smart Matching Features */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                <div className="text-2xl mb-2">🎯</div>
+                <h3 className="font-semibold text-purple-400">Smart Recommendations</h3>
+                <p className="text-sm text-gray-300">AI analyzes your preferences</p>
+              </div>
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                <div className="text-2xl mb-2">💰</div>
+                <h3 className="font-semibold text-green-400">Optimal Partnerships</h3>
+                <p className="text-sm text-gray-300">Best commission rates</p>
+              </div>
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                <div className="text-2xl mb-2">📊</div>
+                <h3 className="font-semibold text-blue-400">Performance Analytics</h3>
+                <p className="text-sm text-gray-300">Track recommendation success</p>
+              </div>
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                <div className="text-2xl mb-2">⚡</div>
+                <h3 className="font-semibold text-orange-400">Real-time Updates</h3>
+                <p className="text-sm text-gray-300">Fresh recommendations daily</p>
+              </div>
+            </div>
+
+            {/* Smart Matching Actions */}
+            <div className="bg-gray-800/30 rounded-lg p-6 border border-gray-700 mb-4">
+              <h3 className="text-lg font-semibold mb-4 text-center">🚀 Experience AI-Powered Matching</h3>
+              <div className="grid md:grid-cols-3 gap-4">
+                <Link
+                  href="/smart-matching"
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <div className="font-semibold">🤖 Smart Matching</div>
+                  <div className="text-xs opacity-90">AI-powered recommendations</div>
+                </Link>
+                <Link
+                  href="/demo-dashboard"
+                  className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <div className="font-semibold">📊 Analytics Demo</div>
+                  <div className="text-xs opacity-90">Professional dashboard</div>
+                </Link>
+                <Link
+                  href="/setup-db"
+                  className="bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <div className="font-semibold">⚙️ Setup Smart DB</div>
+                  <div className="text-xs opacity-90">Initialize AI tables</div>
+                </Link>
+              </div>
+              <div className="text-center mt-4">
+                <p className="text-sm text-gray-400">
+                  🧠 <strong>Advanced AI:</strong> Machine learning algorithms analyze preferences, behavior, and market data for optimal matches
+                </p>
+              </div>
+            </div>
+
+            {/* Value Proposition */}
+            <div className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-500/20">
+              <div className="text-center">
+                <h4 className="font-semibold text-purple-400 mb-2">🎯 Why Smart Matching Matters</h4>
+                <p className="text-sm text-gray-300">
+                  Traditional affiliate matching is manual and time-consuming. Our AI analyzes thousands of data points
+                  to recommend the perfect casino-affiliate partnerships, maximizing your revenue potential.
+                </p>
+              </div>
             </div>
           </div>
+
+          {/* Professional Demo Section */}
+          <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 rounded-xl p-8 border border-green-500/20 mb-8">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-2xl font-bold mb-2 flex items-center">
+                  <span className="mr-3">🚀</span>
+                  FlowLync Affiliate Tracking Demo
+                </h2>
+                <p className="text-gray-300">
+                  Experience our professional affiliate tracking system with real-time analytics
+                </p>
+              </div>
+              <div className="text-right">
+                <div className="text-sm text-green-400 font-semibold">✅ LIVE SYSTEM</div>
+                <div className="text-xs text-gray-400">Production Ready</div>
+              </div>
+            </div>
 
           {/* Demo Features Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
