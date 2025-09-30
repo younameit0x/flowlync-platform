@@ -11,16 +11,23 @@ export default function SmartMatchingDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Development mode - allows testing without authentication
+  const isDev = process.env.NODE_ENV === 'development';
+  const mockUser = { sub: 'dev-user-123' };
+  const effectiveUser = user || (isDev ? mockUser : null);
+
   useEffect(() => {
-    if (user) {
+    if (effectiveUser) {
       fetchRecommendations();
       fetchUserPreferences();
+    } else if (!userLoading && !isDev) {
+      setLoading(false);
     }
-  }, [user]);
+  }, [effectiveUser, userLoading]);
 
   const fetchRecommendations = async () => {
     try {
-      const response = await fetch(`/api/smart-matching/recommendations?user_id=${user.sub}&limit=20`);
+      const response = await fetch(`/api/smart-matching/recommendations?user_id=${effectiveUser.sub}&limit=20`);
       const data = await response.json();
 
       if (response.ok) {
@@ -36,7 +43,7 @@ export default function SmartMatchingDashboard() {
 
   const fetchUserPreferences = async () => {
     try {
-      const response = await fetch(`/api/smart-matching/user-preferences?user_id=${user.sub}`);
+      const response = await fetch(`/api/smart-matching/user-preferences?user_id=${effectiveUser.sub}`);
       const data = await response.json();
 
       if (response.ok) {
@@ -57,7 +64,7 @@ export default function SmartMatchingDashboard() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          user_id: user.sub,
+          user_id: effectiveUser.sub,
           recommendation_id: recommendationId,
           feedback,
           is_accepted: isAccepted
@@ -73,7 +80,7 @@ export default function SmartMatchingDashboard() {
     }
   };
 
-  if (userLoading || loading) {
+  if (userLoading || (loading && !isDev)) {
     return (
       <div style={{
         minHeight: '100vh',
@@ -84,6 +91,36 @@ export default function SmartMatchingDashboard() {
       }}>
         <div style={{ color: 'white', fontSize: '18px' }}>
           🤖 Loading Smart Matching AI...
+        </div>
+      </div>
+    );
+  }
+
+  if (!effectiveUser && !isDev) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <div style={{ color: 'white', textAlign: 'center' }}>
+          <div style={{ fontSize: '24px', marginBottom: '16px' }}>🔐 Login Required</div>
+          <div style={{ marginBottom: '24px' }}>Please log in to access Smart Matching AI</div>
+          <a
+            href="/api/auth/login"
+            style={{
+              background: 'rgba(255, 255, 255, 0.2)',
+              color: 'white',
+              padding: '12px 24px',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              border: '1px solid rgba(255, 255, 255, 0.3)'
+            }}
+          >
+            🔐 Login to Continue
+          </a>
         </div>
       </div>
     );
@@ -397,7 +434,7 @@ export default function SmartMatchingDashboard() {
         )}
 
         {activeTab === 'preferences' && (
-          <UserPreferencesTab user={user} preferences={preferences} onUpdate={fetchUserPreferences} />
+          <UserPreferencesTab user={effectiveUser} preferences={preferences} onUpdate={fetchUserPreferences} />
         )}
 
         {activeTab === 'analytics' && (
@@ -423,6 +460,8 @@ export default function SmartMatchingDashboard() {
 }
 
 function UserPreferencesTab({ user, preferences, onUpdate }) {
+  // Use effectiveUser (includes dev mode support)
+  const effectiveUser = user || { sub: 'dev-user-123' };
   const [formData, setFormData] = useState({
     preferred_categories: preferences?.preferred_categories || [],
     preferred_jurisdictions: preferences?.preferred_jurisdictions || [],
@@ -444,7 +483,7 @@ function UserPreferencesTab({ user, preferences, onUpdate }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          user_id: user.sub,
+          user_id: effectiveUser.sub,
           ...formData
         }),
       });

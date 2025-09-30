@@ -171,7 +171,14 @@ export default function Dashboard() {
             {/* Smart Matching Actions */}
             <div className="bg-gray-800/30 rounded-lg p-6 border border-gray-700 mb-4">
               <h3 className="text-lg font-semibold mb-4 text-center">🚀 Experience AI-Powered Matching</h3>
-              <div className="grid md:grid-cols-3 gap-4">
+              <div className="grid md:grid-cols-4 gap-4">
+                <Link
+                  href="/demo-smart-matching"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <div className="font-semibold">🎬 Interactive Demo</div>
+                  <div className="text-xs opacity-90">See AI in action</div>
+                </Link>
                 <Link
                   href="/smart-matching"
                   className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"

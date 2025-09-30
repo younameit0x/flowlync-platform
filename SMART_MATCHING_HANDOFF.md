@@ -98,6 +98,7 @@ A comprehensive AI-powered recommendation system that intelligently matches user
   ├── user-preferences/route.js (Preferences API)
   └── recommendations/route.js (AI Engine API)
 🎨 src/app/smart-matching/page.js (Main dashboard UI)
+🎬 src/app/demo-smart-matching/page.js (Interactive demo for client attraction)
 ```
 
 ### **Files Modified:**
