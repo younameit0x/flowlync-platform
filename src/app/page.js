@@ -742,28 +742,28 @@ export default function Home() {
                 Become a Casino Partner
               </button>
               <button className="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-bold px-8 py-4 rounded-full transition-all backdrop-blur-sm">
-                Download Partnership Deck
+                Get Partnership Info
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Social Proof Section */}
+      {/* Early Adopter Interest Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Trusted by Industry <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Leaders</span>
+              Ready for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Early Access</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See how FlowLync is transforming affiliate marketing across the ecosystem
+              Join industry professionals interested in being first to adopt DeFi-powered affiliate marketing
             </p>
           </div>
 
-          {/* Testimonials Grid */}
+          {/* Early Adopter Interest Grid */}
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            {/* Affiliate Testimonial */}
+            {/* Affiliate Interest */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <div className="flex items-start space-x-4 mb-6">
                 <div className="bg-gradient-to-r from-green-400 to-blue-500 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
@@ -772,9 +772,9 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-lg">Sarah Mitchell</h4>
-                  <p className="text-blue-600 font-medium">Super Affiliate</p>
-                  <p className="text-gray-500 text-sm">$2.3M annual revenue</p>
+                  <h4 className="font-bold text-gray-900 text-lg">Affiliate Partners</h4>
+                  <p className="text-blue-600 font-medium">Ready for Instant Payments</p>
+                  <p className="text-gray-500 text-sm">Early Access Program</p>
                 </div>
               </div>
               
@@ -787,23 +787,23 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-gray-700 italic">
-                  "FlowLync changed everything for my business. Getting paid instantly instead of waiting 60 days means I can reinvest and scale campaigns immediately. My cashflow went from feast-or-famine to predictable growth."
+                  "Finally, someone's tackling the biggest problem in affiliate marketing. Waiting 30-60 days for payments kills cashflow and growth. We're excited to be early adopters of this DeFi solution."
                 </p>
               </div>
               
               <div className="border-t border-gray-100 pt-4">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Monthly Volume</span>
-                  <span className="font-semibold text-gray-900">$420K</span>
+                  <span className="text-gray-500">Current Payment Wait</span>
+                  <span className="font-semibold text-gray-900">30-60 days</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Time with FlowLync</span>
-                  <span className="font-semibold text-gray-900">8 months</span>
+                  <span className="text-gray-500">Target with FlowLync</span>
+                  <span className="font-semibold text-gray-900">Instant</span>
                 </div>
               </div>
             </div>
 
-            {/* Casino Testimonial */}
+            {/* Casino Interest */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <div className="flex items-start space-x-4 mb-6">
                 <div className="bg-gradient-to-r from-purple-500 to-pink-500 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
@@ -812,9 +812,9 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-lg">Marcus Rodriguez</h4>
-                  <p className="text-purple-600 font-medium">VP Marketing</p>
-                  <p className="text-gray-500 text-sm">EliteCasino Group</p>
+                  <h4 className="font-bold text-gray-900 text-lg">Casino Operators</h4>
+                  <p className="text-purple-600 font-medium">Partnership Interest</p>
+                  <p className="text-gray-500 text-sm">Premium Partner Program</p>
                 </div>
               </div>
               
@@ -827,23 +827,23 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-gray-700 italic">
-                  "Since partnering with FlowLync, our affiliate program attracts premium partners who know they'll get paid instantly. Player quality improved 40% and affiliate satisfaction is through the roof. This is the future of casino marketing."
+                  "We're tired of losing top affiliates to competitors who offer faster payments. FlowLync's DeFi approach could revolutionize how we attract and retain premium partners. Ready to be among the first adopters."
                 </p>
               </div>
               
               <div className="border-t border-gray-100 pt-4">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Player LTV Increase</span>
-                  <span className="font-semibold text-gray-900">+43%</span>
+                  <span className="text-gray-500">Current Affiliate Wait</span>
+                  <span className="font-semibold text-gray-900">30-60 days</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Affiliate Retention</span>
-                  <span className="font-semibold text-gray-900">94%</span>
+                  <span className="text-gray-500">Target Partnership</span>
+                  <span className="font-semibold text-gray-900">Launch Partner</span>
                 </div>
               </div>
             </div>
 
-            {/* Liquidity Provider Testimonial */}
+            {/* Liquidity Provider Interest */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <div className="flex items-start space-x-4 mb-6">
                 <div className="bg-gradient-to-r from-blue-500 to-indigo-600 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
@@ -852,9 +852,9 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-lg">Jennifer Chen</h4>
-                  <p className="text-blue-600 font-medium">DeFi Investor</p>
-                  <p className="text-gray-500 text-sm">$1.2M+ in liquidity</p>
+                  <h4 className="font-bold text-gray-900 text-lg">DeFi Liquidity Providers</h4>
+                  <p className="text-blue-600 font-medium">Yield Opportunity</p>
+                  <p className="text-gray-500 text-sm">Target 8-15% APY</p>
                 </div>
               </div>
               
@@ -867,18 +867,18 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-gray-700 italic">
-                  "FlowLync offers institutional-grade yield in an underserved market. The 12.5% APY is backed by real casino revenue, not speculative tokens. It's like being the bank for affiliate marketing - steady, profitable, and scalable."
+                  "This addresses a real market inefficiency. Casino affiliate payments are backed by actual revenue, making this a compelling yield opportunity compared to typical DeFi protocols. We're interested in the pilot program."
                 </p>
               </div>
               
               <div className="border-t border-gray-100 pt-4">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Current Yield</span>
-                  <span className="font-semibold text-gray-900">12.5% APY</span>
+                  <span className="text-gray-500">Target Yield Range</span>
+                  <span className="font-semibold text-gray-900">8-15% APY</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Capital Deployed</span>
-                  <span className="font-semibold text-gray-900">14 months</span>
+                  <span className="text-gray-500">Risk Assessment</span>
+                  <span className="font-semibold text-gray-900">Revenue-Backed</span>
                 </div>
               </div>
             </div>
@@ -886,79 +886,79 @@ export default function Home() {
 
           {/* Stats Section */}
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 lg:p-12 text-white">
-            <h3 className="text-3xl font-bold text-center mb-12">FlowLync by the Numbers</h3>
+            <h3 className="text-3xl font-bold text-center mb-12">Market Opportunity</h3>
             
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="text-4xl lg:text-5xl font-bold mb-2">$47M+</div>
-                <p className="text-blue-100">Total Volume Processed</p>
+                <div className="text-4xl lg:text-5xl font-bold mb-2">$180B</div>
+                <p className="text-blue-100">Global Affiliate Market</p>
               </div>
               
               <div className="text-center">
-                <div className="text-4xl lg:text-5xl font-bold mb-2">2,340</div>
-                <p className="text-blue-100">Active Affiliates</p>
+                <div className="text-4xl lg:text-5xl font-bold mb-2">30-60</div>
+                <p className="text-blue-100">Days Payment Delays</p>
               </div>
               
               <div className="text-center">
-                <div className="text-4xl lg:text-5xl font-bold mb-2">180+</div>
-                <p className="text-blue-100">Casino Partners</p>
+                <div className="text-4xl lg:text-5xl font-bold mb-2">Pre-Launch</div>
+                <p className="text-blue-100">Partnership Phase</p>
               </div>
               
               <div className="text-center">
-                <div className="text-4xl lg:text-5xl font-bold mb-2">98.7%</div>
-                <p className="text-blue-100">Payment Success Rate</p>
+                <div className="text-4xl lg:text-5xl font-bold mb-2">8-15%</div>
+                <p className="text-blue-100">Target DeFi Yields</p>
               </div>
             </div>
           </div>
 
-          {/* Case Study Preview */}
+          {/* Vision & Roadmap Preview */}
           <div className="mt-16 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
             <div className="lg:flex">
               <div className="lg:w-1/3 bg-gradient-to-br from-gray-900 to-blue-900 p-8 lg:p-12 text-white">
-                <h3 className="text-2xl font-bold mb-4">Success Story</h3>
-                <h4 className="text-xl mb-6 text-blue-200">From $50K to $2M in 18 months</h4>
+                <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
+                <h4 className="text-xl mb-6 text-blue-200">Transforming Affiliate Marketing with DeFi</h4>
                 <p className="text-blue-100 mb-6">
-                  How GamingPro Network scaled their affiliate business using FlowLync's instant payment model.
+                  Join us in building the first DeFi-powered affiliate network. Be among the founding partners shaping the future.
                 </p>
                 <button className="bg-white/20 hover:bg-white/30 border border-white/30 text-white px-6 py-3 rounded-lg font-medium transition-all backdrop-blur-sm">
-                  Read Full Case Study
+                  Join Early Access
                 </button>
               </div>
               
               <div className="lg:w-2/3 p-8 lg:p-12">
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <h5 className="text-lg font-bold text-gray-900 mb-4">Key Challenges</h5>
+                    <h5 className="text-lg font-bold text-gray-900 mb-4">Industry Problems We're Solving</h5>
                     <ul className="space-y-2 text-gray-600">
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
-                        <span>60-day payment delays killing cashflow</span>
+                        <span>30-60 day payment delays killing affiliate cashflow</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
-                        <span>Top affiliates leaving for competitors</span>
+                        <span>Top affiliates leaving for instant payment models</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
-                        <span>Unable to scale marketing spend</span>
+                        <span>Casinos missing out on premium affiliate partnerships</span>
                       </li>
                     </ul>
                   </div>
                   
                   <div>
-                    <h5 className="text-lg font-bold text-gray-900 mb-4">FlowLync Results</h5>
+                    <h5 className="text-lg font-bold text-gray-900 mb-4">FlowLync Solution Benefits</h5>
                     <ul className="space-y-2 text-gray-600">
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
-                        <span>Instant payments = 40x revenue growth</span>
+                        <span>Instant payments through DeFi liquidity</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
-                        <span>95% affiliate retention rate</span>
+                        <span>Attract and retain premium affiliates</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></span>
-                        <span>Scaled from 12 to 400+ affiliates</span>
+                        <span>Generate yield for liquidity providers</span>
                       </li>
                     </ul>
                   </div>
