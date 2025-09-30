@@ -126,6 +126,100 @@ export default function Dashboard() {
           </div>
         </div>
 
+          {/* Blogger Hub Section */}
+          <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 rounded-xl p-8 border border-green-500/20 mb-8">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-2xl font-bold mb-2 flex items-center">
+                  <span className="mr-3">🤝</span>
+                  Blogger Hub
+                </h2>
+                <p className="text-gray-300">
+                  Complete content monetization platform for bloggers and content creators
+                </p>
+              </div>
+              <div className="text-right">
+                <div className="text-sm text-green-400 font-semibold">✨ BLOGGER PLATFORM</div>
+                <div className="text-xs text-gray-400">AI-Powered Growth</div>
+              </div>
+            </div>
+
+            {/* Blogger Features */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                <div className="text-2xl mb-2">✍️</div>
+                <h3 className="font-semibold text-green-400">Content Creator</h3>
+                <p className="text-sm text-gray-300">AI-powered content ideas</p>
+              </div>
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                <div className="text-2xl mb-2">👥</div>
+                <h3 className="font-semibold text-blue-400">Community</h3>
+                <p className="text-sm text-gray-300">Connect with bloggers</p>
+              </div>
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                <div className="text-2xl mb-2">📈</div>
+                <h3 className="font-semibold text-purple-400">Growth Analytics</h3>
+                <p className="text-sm text-gray-300">Track monetization progress</p>
+              </div>
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                <div className="text-2xl mb-2">🏆</div>
+                <h3 className="font-semibold text-orange-400">Achievements</h3>
+                <p className="text-sm text-gray-300">Unlock blogger milestones</p>
+              </div>
+            </div>
+
+            {/* Blogger Actions */}
+            <div className="bg-gray-800/30 rounded-lg p-6 border border-gray-700 mb-4">
+              <h3 className="text-lg font-semibold mb-4 text-center">🚀 Blogger Success Platform</h3>
+              <div className="grid md:grid-cols-4 gap-4">
+                <Link
+                  href="/blogger-dashboard"
+                  className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <div className="font-semibold">🤝 Blogger Hub</div>
+                  <div className="text-xs opacity-90">Complete platform</div>
+                </Link>
+                <Link
+                  href="/smart-matching"
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <div className="font-semibold">🤖 Smart Matching</div>
+                  <div className="text-xs opacity-90">AI recommendations</div>
+                </Link>
+                <Link
+                  href="/demo-smart-matching"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <div className="font-semibold">🎬 Interactive Demo</div>
+                  <div className="text-xs opacity-90">See AI in action</div>
+                </Link>
+                <Link
+                  href="/smart-matching-landing"
+                  className="bg-gradient-to-r from-orange-600 to-pink-600 hover:from-orange-700 hover:to-pink-700 px-4 py-3 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  <div className="font-semibold">📄 Marketing Page</div>
+                  <div className="text-xs opacity-90">Professional presentation</div>
+                </Link>
+              </div>
+              <div className="text-center mt-4">
+                <p className="text-sm text-gray-400">
+                  🎨 <strong>Complete Blogger Experience:</strong> Content creation, community, analytics, and achievement tracking in one platform
+                </p>
+              </div>
+            </div>
+
+            {/* Blogger Value Proposition */}
+            <div className="mt-6 p-4 bg-gradient-to-r from-green-500/10 to-blue-500/10 rounded-lg border border-green-500/20">
+              <div className="text-center">
+                <h4 className="font-semibold text-green-400 mb-2">🎯 Perfect for Content Creators</h4>
+                <p className="text-sm text-gray-300">
+                  Transform your blog traffic into consistent affiliate revenue with AI-powered recommendations,
+                  content creation tools, and a supportive blogger community.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Smart Matching AI Section */}
           <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-8 border border-purple-500/20 mb-8">
             <div className="flex items-center justify-between mb-6">
