@@ -73,7 +73,7 @@ async function getGroqResponse(message) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      model: 'llama3-8b-8192',
+      model: 'llama-3.1-8b-instant', // Updated model name
       messages: [{
         role: 'system',
         content: `You are an expert affiliate marketing consultant specializing in casino and gaming affiliate programs. Provide specific, actionable advice focused on: affiliate programs, content strategies, SEO techniques, traffic generation, compliance, and revenue optimization. Keep responses concise but valuable (2-3 sentences max).`
