@@ -1,24 +1,88 @@
-import { NextResponse } from 'next/server';
+export async function GET() {export async function GET() {export async function GET() {
 
-// Simplified AI Chat Assistant - No external dependencies for testing
-class SimpleAIChatAssistant {
-  constructor() {
-    this.responses = {
-      affiliate: [
-        "Casino affiliate programs typically offer 25-45% commission rates. Look for programs with reliable payments and good conversion rates.",
-        "Start with well-established casino brands that have proven track records in affiliate marketing.",
-        "Focus on programs that provide marketing materials and dedicated affiliate managers."
-      ],
-      content: [
-        "Create detailed casino reviews with pros and cons - this builds trust with your audience.",
-        "Write comparison posts between different casino bonuses - these convert very well.",
-        "Develop beginner guides to casino games - educational content attracts new players."
-      ],
-      seo: [
-        "Target long-tail keywords like 'best casino affiliate programs for beginners'",
-        "Create location-specific content if you're targeting certain regions",
-        "Build topical authority by covering all aspects of casino affiliate marketing"
-      ]
+  return new Response(JSON.stringify({ 
+
+    message: 'AI Assistant API works!',  return new Response(JSON.stringify({   return new Response(JSON.stringify({ 
+
+    timestamp: new Date().toISOString(),
+
+    status: 'active'    message: 'AI Assistant API works!',    message: 'AI Assistant API works!',
+
+  }), {
+
+    headers: { 'Content-Type': 'application/json' }    timestamp: new Date().toISOString(),    timestamp: new Date().toISOString(),
+
+  });
+
+}    status: 'active'    status: 'active'
+
+
+
+export async function POST(request) {  }), {  }), {
+
+  try {
+
+    const body = await request.json();    headers: { 'Content-Type': 'application/json' }    headers: { 'Content-Type': 'application/json' }
+
+    return new Response(JSON.stringify({ 
+
+      message: 'AI Assistant POST works!',  });  });
+
+      received: body,
+
+      response: 'Hello from AI Assistant API!'}}
+
+    }), {
+
+      headers: { 'Content-Type': 'application/json' }
+
+    });
+
+  } catch (error) {export async function POST(request) {export async function POST(request) {
+
+    return new Response(JSON.stringify({ 
+
+      error: 'Invalid JSON'  try {  try {
+
+    }), {
+
+      status: 400,    const body = await request.json();    const body = await request.json();
+
+      headers: { 'Content-Type': 'application/json' }
+
+    });    return new Response(JSON.stringify({     return new Response(JSON.stringify({ 
+
+  }
+
+}      message: 'AI Assistant POST works!',      message: 'AI Assistant POST works!',
+
+      received: body,      received: body,
+
+      response: 'Hello from AI Assistant API!'      response: 'Hello from AI Assistant API!'
+
+    }), {    }), {
+
+      headers: { 'Content-Type': 'application/json' }      headers: { 'Content-Type': 'application/json' }
+
+    });    });
+
+  } catch (error) {  } catch (error) {
+
+    return new Response(JSON.stringify({     return new Response(JSON.stringify({ 
+
+      error: 'Invalid JSON'      error: 'Invalid JSON'
+
+    }), {    }), {
+
+      status: 400,      status: 400,
+
+      headers: { 'Content-Type': 'application/json' }      headers: { 'Content-Type': 'application/json' }
+
+    });    });
+
+  }  }
+
+}      ]
     };
   }
 
