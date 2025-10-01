@@ -10,40 +10,90 @@ if (!supabaseUrl || !supabaseServiceKey) {
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-// AI-powered recommendation algorithm
+// 🚀 Enhanced AI-powered Smart Matching with Real-Time Data
 class SmartMatchingAI {
   constructor() {
     this.weights = {
-      category_match: 0.25,
-      jurisdiction_match: 0.20,
-      feature_match: 0.15,
+      category_match: 0.20,
+      jurisdiction_match: 0.15,
+      feature_match: 0.10,
       budget_compatibility: 0.10,
       experience_level: 0.10,
-      reputation_score: 0.10,
-      performance_history: 0.10
+      reputation_score: 0.05,
+      performance_history: 0.05,
+      // New real-time factors
+      live_commission_rate: 0.15,
+      trending_score: 0.10,
+      real_time_availability: 0.10,
+      market_opportunity: 0.10,
+      competitive_advantage: 0.05
     };
   }
 
-  // Calculate match score between user preferences and affiliate/casino
-  calculateMatchScore(userPrefs, affiliate, casino) {
+  // Enhanced match score calculation with real-time data
+  async calculateEnhancedMatchScore(userPrefs, affiliate, casino) {
     let score = 0;
     let reasoning = [];
 
-    // Category match (25%)
+    // Get real-time data for this affiliate program
+    const realTimeData = await this.fetchRealTimeData(affiliate.name || casino.name);
+
+    // Category match (20%)
     if (userPrefs.preferred_categories && affiliate.specialization) {
       const categoryMatch = userPrefs.preferred_categories.includes(affiliate.specialization) ? 1 : 0;
       score += categoryMatch * this.weights.category_match;
       reasoning.push(`Category match: ${categoryMatch ? 'Perfect' : 'No match'} (${affiliate.specialization})`);
     }
 
-    // Jurisdiction compatibility (20%)
+    // Jurisdiction compatibility (15%)
     if (userPrefs.preferred_jurisdictions && casino.jurisdiction) {
       const jurisdictionMatch = userPrefs.preferred_jurisdictions.includes(casino.jurisdiction) ? 1 : 0;
       score += jurisdictionMatch * this.weights.jurisdiction_match;
       reasoning.push(`Jurisdiction compatibility: ${jurisdictionMatch ? 'Compatible' : 'Not compatible'} (${casino.jurisdiction})`);
     }
 
-    // Feature match (15%)
+    // 🔥 Live Commission Rate Analysis (15%)
+    if (realTimeData?.current_commission) {
+      const commissionScore = this.calculateCommissionScore(realTimeData.current_commission, userPrefs.min_commission || 20);
+      score += commissionScore * this.weights.live_commission_rate;
+      reasoning.push(`Live commission: ${realTimeData.current_commission}% (Score: ${(commissionScore * 100).toFixed(1)}%)`);
+      
+      // Commission change indicator
+      if (realTimeData.commission_change_24h > 0) {
+        reasoning.push(`🔥 Commission increased by ${realTimeData.commission_change_24h.toFixed(1)}% in 24h`);
+      }
+    }
+
+    // 📈 Real-Time Trending Score (10%)
+    if (realTimeData?.trending_score) {
+      const trendingScore = realTimeData.trending_score / 100; // Normalize to 0-1
+      score += trendingScore * this.weights.trending_score;
+      reasoning.push(`Trending score: ${realTimeData.trending_score}/100 (${realTimeData.momentum || 'Stable'})`);
+      
+      if (realTimeData.momentum === 'Explosive' || realTimeData.momentum === 'Hot') {
+        reasoning.push(`🚀 ${realTimeData.momentum} momentum detected - Act fast!`);
+      }
+    }
+
+    // ⚡ Real-Time Availability (10%)
+    if (realTimeData?.live_status) {
+      const availabilityScore = realTimeData.live_status === 'accepting_affiliates' ? 1 : 0;
+      score += availabilityScore * this.weights.real_time_availability;
+      reasoning.push(`Live status: ${realTimeData.live_status}`);
+      
+      if (realTimeData.seasonal_bonus) {
+        reasoning.push(`💰 Active bonus: ${realTimeData.seasonal_bonus}`);
+      }
+    }
+
+    // 🎯 Market Opportunity Score (10%)
+    if (realTimeData) {
+      const opportunityScore = this.calculateOpportunityScore(realTimeData);
+      score += opportunityScore * this.weights.market_opportunity;
+      reasoning.push(`Market opportunity: ${(opportunityScore * 100).toFixed(1)}% (${realTimeData.competition_level} competition)`);
+    }
+
+    // Feature match (10%)
     if (userPrefs.preferred_features && casino.features) {
       const userFeatures = userPrefs.preferred_features || [];
       const casinoFeatures = casino.features || [];
@@ -152,6 +202,172 @@ class SmartMatchingAI {
       throw error;
     }
   }
+
+  // 🚀 Real-Time Data Integration Methods
+
+  // Fetch real-time data for a specific affiliate program
+  async fetchRealTimeData(programName) {
+    try {
+      // Simulate API call to our live-rates endpoint
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/smart-matching/live-rates`);
+      const data = await response.json();
+      
+      if (data.success && data.data) {
+        // Find the specific program
+        const programData = data.data.find(program => 
+          program.program_name.toLowerCase().includes(programName.toLowerCase()) ||
+          programName.toLowerCase().includes(program.program_name.toLowerCase())
+        );
+        
+        return programData || null;
+      }
+      
+      return null;
+    } catch (error) {
+      console.error('Error fetching real-time data:', error);
+      return null;
+    }
+  }
+
+  // Calculate commission score based on current rates vs user preference
+  calculateCommissionScore(currentCommission, minCommission) {
+    if (currentCommission >= minCommission) {
+      // Normalize to 0-1 scale, with bonus points for higher commissions
+      const baseScore = Math.min(currentCommission / 50, 1); // Cap at 50% commission
+      const bonusScore = Math.max(0, (currentCommission - minCommission) / 20); // Bonus for exceeding minimum
+      return Math.min(baseScore + bonusScore * 0.2, 1);
+    }
+    return 0;
+  }
+
+  // Calculate market opportunity score
+  calculateOpportunityScore(realTimeData) {
+    let opportunityScore = 0.5; // Base score
+    
+    // Competition level impact
+    switch (realTimeData.competition_level?.toLowerCase()) {
+      case 'low':
+        opportunityScore += 0.3;
+        break;
+      case 'medium':
+        opportunityScore += 0.1;
+        break;
+      case 'high':
+        opportunityScore -= 0.1;
+        break;
+    }
+    
+    // Program health impact
+    if (realTimeData.program_health) {
+      opportunityScore += (realTimeData.program_health - 80) / 100; // Health above 80% is good
+    }
+    
+    // Volume change impact
+    if (realTimeData.volume_change_24h) {
+      opportunityScore += Math.min(realTimeData.volume_change_24h / 100, 0.2); // Cap at 20% bonus
+    }
+    
+    // Seasonal bonus boost
+    if (realTimeData.seasonal_bonus) {
+      opportunityScore += 0.15;
+    }
+    
+    return Math.max(0, Math.min(1, opportunityScore));
+  }
+
+  // Enhanced recommendation generation with real-time data
+  async generateEnhancedRecommendations(userId, limit = 10) {
+    try {
+      // Get user preferences
+      const { data: userPrefs } = await supabase
+        .from('user_preferences')
+        .select('*')
+        .eq('user_id', userId)
+        .single();
+
+      if (!userPrefs) {
+        return [];
+      }
+
+      // Get affiliates and casinos
+      const { data: affiliates } = await supabase.from('affiliates').select('*');
+      const { data: casinos } = await supabase.from('casinos').select('*');
+
+      if (!affiliates || !casinos) {
+        return [];
+      }
+
+      const recommendations = [];
+
+      // Enhanced matching with real-time data
+      for (const affiliate of affiliates) {
+        for (const casino of casinos) {
+          if (affiliate.accepted_casinos && !affiliate.accepted_casinos.includes(casino.id)) {
+            continue;
+          }
+
+          // Use enhanced match score calculation
+          const matchResult = await this.calculateEnhancedMatchScore(userPrefs, affiliate, casino);
+
+          if (matchResult.score >= 50) {
+            // Get trending data for additional context
+            const trendingResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/smart-matching/trending`);
+            const trendingData = await trendingResponse.json();
+            let trendingInfo = null;
+            
+            if (trendingData.success) {
+              trendingInfo = trendingData.data.find(trend => 
+                trend.program_name.toLowerCase().includes(casino.name.toLowerCase())
+              );
+            }
+
+            recommendations.push({
+              affiliate_id: affiliate.id,
+              casino_id: casino.id,
+              affiliate_name: affiliate.name,
+              casino_name: casino.name,
+              affiliate_logo: affiliate.logo_url,
+              casino_logo: casino.logo_url,
+              affiliate_website: affiliate.website_url,
+              casino_website: casino.website_url,
+              confidence_score: matchResult.score,
+              reasoning: matchResult.reasoning,
+              recommendation_type: 'partnership',
+              commission_rate: affiliate.commission_rate,
+              casino_category: casino.category,
+              casino_jurisdiction: casino.jurisdiction,
+              // Enhanced real-time data
+              real_time_data: matchResult.realTimeData,
+              trending_info: trendingInfo,
+              opportunity_level: trendingInfo ? trendingInfo.momentum : 'Stable',
+              time_sensitive: trendingInfo?.time_to_act || null,
+              market_insight: matchResult.marketInsight
+            });
+          }
+        }
+      }
+
+      // Enhanced sorting with real-time factors
+      recommendations.sort((a, b) => {
+        // Primary sort: confidence score
+        if (b.confidence_score !== a.confidence_score) {
+          return b.confidence_score - a.confidence_score;
+        }
+        
+        // Secondary sort: trending momentum
+        const momentumPriority = { 'Explosive': 4, 'Hot': 3, 'Rising': 2, 'Emerging': 1, 'Stable': 0 };
+        const aMomentum = momentumPriority[a.opportunity_level] || 0;
+        const bMomentum = momentumPriority[b.opportunity_level] || 0;
+        
+        return bMomentum - aMomentum;
+      });
+
+      return recommendations.slice(0, limit);
+    } catch (error) {
+      console.error('Error generating enhanced recommendations:', error);
+      throw error;
+    }
+  }
 }
 
 // GET /api/smart-matching/recommendations - Generate recommendations for a user
@@ -169,9 +385,31 @@ export async function GET(request) {
     }
 
     const ai = new SmartMatchingAI();
-    const recommendations = await ai.generateRecommendations(userId, limit);
+    
+    // Use enhanced recommendations with real-time data
+    const recommendations = await ai.generateEnhancedRecommendations(userId, limit);
+    
+    // Add real-time market summary
+    const marketSummary = {
+      total_recommendations: recommendations.length,
+      trending_opportunities: recommendations.filter(r => r.trending_info && r.trending_info.trending_score > 85).length,
+      time_sensitive_deals: recommendations.filter(r => r.time_sensitive).length,
+      average_confidence: recommendations.length > 0 
+        ? Math.round(recommendations.reduce((sum, r) => sum + r.confidence_score, 0) / recommendations.length)
+        : 0,
+      last_updated: new Date().toISOString()
+    };
 
-    return NextResponse.json({ recommendations });
+    return NextResponse.json({ 
+      recommendations,
+      market_summary: marketSummary,
+      enhanced_features: {
+        real_time_data: true,
+        trending_analysis: true,
+        market_intelligence: true,
+        ai_powered: true
+      }
+    });
   } catch (error) {
     console.error('Error in GET /api/smart-matching/recommendations:', error);
 
