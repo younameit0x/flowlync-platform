@@ -34,7 +34,7 @@ Successfully implemented a comprehensive AI-powered recommendation system that r
 - **Continuous learning** from user feedback
 - **Real-time analysis** of 500+ affiliate programs
 
-### **🔗 API Endpoints (7 Complete APIs)**
+### **🔗 API Endpoints (9 Complete APIs)**
 - `GET/POST /api/smart-matching/casinos` - Casino management
 - `GET/POST /api/smart-matching/affiliates` - Affiliate management
 - `GET/POST /api/smart-matching/user-preferences` - Preference management
@@ -42,6 +42,8 @@ Successfully implemented a comprehensive AI-powered recommendation system that r
 - `GET /api/smart-matching/analytics` - Performance analytics & insights
 - `POST /api/smart-matching/batch` - Bulk operations & data management
 - `POST /api/smart-matching/webhooks` - External integrations & real-time updates
+- `POST /api/ai-chat` - Basic AI chat assistant
+- `POST /api/ai-chat-enhanced` - Enhanced AI with real AI API integration
 
 ### **🎨 User Interface (4 Complete Platforms)**
 - **`/blogger-dashboard`** - Complete blogger monetization platform
