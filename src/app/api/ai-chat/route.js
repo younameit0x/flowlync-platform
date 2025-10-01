@@ -1,9 +1,10 @@
 export async function GET() {
   return new Response(JSON.stringify({ 
-    status: 'Premium AI Chat API - FREE Groq + Smart Patterns',
+    status: 'Premium AI Chat API - FREE Groq + Smart Patterns v2',
     endpoints: ['POST /api/ai-chat'],
     features: ['Real AI responses (Groq)', 'Smart pattern fallbacks', 'Zero cost'],
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    deployment: 'force-refresh'
   }), {
     headers: { 'Content-Type': 'application/json' }
   });
