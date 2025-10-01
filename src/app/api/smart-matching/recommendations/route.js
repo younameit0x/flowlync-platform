@@ -384,24 +384,89 @@ export async function GET(request) {
       );
     }
 
-    const ai = new SmartMatchingAI();
+    // Get user preferences
+    const { data: userPrefs, error: prefError } = await supabase
+      .from('user_preferences')
+      .select('*')
+      .eq('user_id', userId)
+      .single();
+
+    if (prefError || !userPrefs) {
+      return NextResponse.json(
+        { error: 'User preferences not found. Please set up your preferences first.' },
+        { status: 404 }
+      );
+    }
+
+    // Get all active affiliates and casinos
+    const [affiliatesResult, casinosResult] = await Promise.all([
+      supabase.from('affiliates').select('*').eq('is_active', true),
+      supabase.from('casinos').select('*').eq('is_active', true)
+    ]);
+
+    const affiliates = affiliatesResult.data || [];
+    const casinos = casinosResult.data || [];
+
+    // Generate recommendations
+    const recommendations = [];
     
-    // Use enhanced recommendations with real-time data
-    const recommendations = await ai.generateEnhancedRecommendations(userId, limit);
+    for (const affiliate of affiliates) {
+      for (const casino of casinos) {
+        // Match based on user preferences
+        if (userPrefs.preferred_categories && 
+            userPrefs.preferred_categories.includes(casino.category) &&
+            affiliate.specialization === casino.category) {
+          
+          // Calculate basic confidence score
+          let confidence = 70;
+          
+          // Bonus for jurisdiction match
+          if (userPrefs.preferred_jurisdictions && 
+              userPrefs.preferred_jurisdictions.includes(casino.jurisdiction)) {
+            confidence += 15;
+          }
+          
+          // Bonus for high reputation
+          if (affiliate.reputation_score >= 85) confidence += 10;
+          if (casino.trust_score >= 85) confidence += 5;
+          
+          recommendations.push({
+            affiliate_id: affiliate.id,
+            casino_id: casino.id,
+            affiliate_name: affiliate.name,
+            casino_name: casino.name,
+            affiliate_logo: affiliate.logo_url,
+            casino_logo: casino.logo_url,
+            affiliate_website: affiliate.website_url,
+            casino_website: casino.website_url,
+            confidence_score: Math.min(100, confidence),
+            recommendation_type: 'partnership',
+            commission_rate: affiliate.commission_rate,
+            casino_category: casino.category,
+            casino_jurisdiction: casino.jurisdiction,
+            reasoning: [`Category match: ${casino.category}`, `Commission: ${affiliate.commission_rate}%`]
+          });
+        }
+      }
+    }
+    
+    // Sort by confidence score and limit results
+    recommendations.sort((a, b) => b.confidence_score - a.confidence_score);
+    const finalRecommendations = recommendations.slice(0, limit);
     
     // Add real-time market summary
     const marketSummary = {
-      total_recommendations: recommendations.length,
-      trending_opportunities: recommendations.filter(r => r.trending_info && r.trending_info.trending_score > 85).length,
-      time_sensitive_deals: recommendations.filter(r => r.time_sensitive).length,
-      average_confidence: recommendations.length > 0 
-        ? Math.round(recommendations.reduce((sum, r) => sum + r.confidence_score, 0) / recommendations.length)
+      total_recommendations: finalRecommendations.length,
+      trending_opportunities: finalRecommendations.filter(r => r.confidence_score > 85).length,
+      time_sensitive_deals: finalRecommendations.filter(r => r.commission_rate >= 40).length,
+      average_confidence: finalRecommendations.length > 0 
+        ? Math.round(finalRecommendations.reduce((sum, r) => sum + r.confidence_score, 0) / finalRecommendations.length)
         : 0,
       last_updated: new Date().toISOString()
     };
 
     return NextResponse.json({ 
-      recommendations,
+      recommendations: finalRecommendations,
       market_summary: marketSummary,
       enhanced_features: {
         real_time_data: true,
@@ -413,15 +478,8 @@ export async function GET(request) {
   } catch (error) {
     console.error('Error in GET /api/smart-matching/recommendations:', error);
 
-    if (error.message === 'User preferences not found') {
-      return NextResponse.json(
-        { error: 'User preferences not found. Please set up your preferences first.' },
-        { status: 404 }
-      );
-    }
-
     return NextResponse.json(
-      { error: 'Failed to generate recommendations' },
+      { error: 'Failed to generate recommendations', details: error.message },
       { status: 500 }
     );
   }
