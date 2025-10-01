@@ -28,7 +28,8 @@ export async function POST(request) {
     return new Response(JSON.stringify({
       response,
       timestamp: new Date().toISOString(),
-      context: 'ai_chat_assistant'
+      context: 'ai_chat_assistant',
+      version: 'v2_fixed_api'
     }), {
       headers: { 'Content-Type': 'application/json' }
     });
