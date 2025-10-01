@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import "./globals.css";
+import AIChatWidget from '../components/AIChatWidget';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
       >
         <UserProvider>
           {children}
+          <AIChatWidget />
         </UserProvider>
       </body>
     </html>
