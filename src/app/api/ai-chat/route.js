@@ -10,11 +10,11 @@ export async function GET() {
   });
 }
 
-// Premium AI Chat with FREE Groq + Smart Fallbacks
+// Premium AI Chat with Platform Integration
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { message } = body;
+    const { message, user_id, context } = body;
 
     if (!message) {
       return new Response(JSON.stringify({ 
@@ -25,22 +25,33 @@ export async function POST(request) {
       });
     }
 
-    // Try FREE AI with intelligent fallback
+    // Analyze user intent and determine if platform integration is needed
+    const intent = analyzeUserIntent(message);
+    
     let aiResponse;
     let provider = 'smart_patterns';
-    
+    let platformIntegration = null;
+
+    // Try AI providers first
     try {
-      // Try Groq (free tier) if API key available
       if (process.env.GROQ_API_KEY) {
-        aiResponse = await getGroqResponse(message);
+        aiResponse = await getGroqResponse(message, intent);
         provider = 'groq_free';
       } else {
         throw new Error('Groq not configured, using patterns');
       }
     } catch (error) {
-      // Fallback to advanced pattern matching (always works)
-      aiResponse = getAdvancedPatternResponse(message);
+      aiResponse = getAdvancedPatternResponse(message, intent);
       provider = 'smart_patterns';
+    }
+
+    // Add platform-specific integrations based on intent
+    if (intent.needsSmartMatching && user_id) {
+      platformIntegration = await generateSmartMatchingIntegration(intent, user_id);
+    } else if (intent.needsPlatformGuidance) {
+      platformIntegration = generatePlatformGuidance(intent);
+    } else if (intent.needsUserProfiling) {
+      platformIntegration = generateUserProfilingQuestions(intent);
     }
 
     return new Response(JSON.stringify({
@@ -48,7 +59,9 @@ export async function POST(request) {
       timestamp: new Date().toISOString(),
       context: 'premium_ai_assistant',
       provider: provider,
-      version: 'upgraded_free_ai'
+      version: 'platform_integrated_v1',
+      intent: intent.categories,
+      platform_integration: platformIntegration
     }), {
       headers: { 'Content-Type': 'application/json' }
     });
@@ -141,6 +154,193 @@ function getAdvancedPatternResponse(message) {
   
   // Default Response
   return "I'm here to help you succeed in affiliate marketing! I can assist with **affiliate programs**, **content creation**, **SEO optimization**, **traffic generation**, and **revenue strategies**. What would you like to know more about?";
+}
+
+// Platform Integration Functions
+
+// Intelligent Intent Analysis
+function analyzeUserIntent(message) {
+  const lowerMessage = message.toLowerCase();
+  const intent = {
+    categories: [],
+    needsSmartMatching: false,
+    needsPlatformGuidance: false,
+    needsUserProfiling: false,
+    userLevel: 'unknown',
+    specificNeeds: []
+  };
+
+  // Detect if user needs Smart Matching
+  if (lowerMessage.includes('recommend') || lowerMessage.includes('best program') || 
+      lowerMessage.includes('which affiliate') || lowerMessage.includes('find program') ||
+      lowerMessage.includes('suggest') || lowerMessage.includes('help me choose')) {
+    intent.needsSmartMatching = true;
+    intent.categories.push('smart_matching');
+  }
+
+  // Detect if user needs platform guidance
+  if (lowerMessage.includes('how to use') || lowerMessage.includes('dashboard') ||
+      lowerMessage.includes('getting started') || lowerMessage.includes('navigate') ||
+      lowerMessage.includes('setup') || lowerMessage.includes('flowlync')) {
+    intent.needsPlatformGuidance = true;
+    intent.categories.push('platform_guidance');
+  }
+
+  // Detect user experience level
+  if (lowerMessage.includes('beginner') || lowerMessage.includes('new to') ||
+      lowerMessage.includes('just started') || lowerMessage.includes('first time')) {
+    intent.userLevel = 'beginner';
+    intent.needsUserProfiling = true;
+  } else if (lowerMessage.includes('experienced') || lowerMessage.includes('advanced') ||
+             lowerMessage.includes('scaling') || lowerMessage.includes('optimize')) {
+    intent.userLevel = 'advanced';
+  }
+
+  // Add content categories
+  if (lowerMessage.includes('affiliate') || lowerMessage.includes('program')) {
+    intent.categories.push('affiliate_programs');
+  }
+  if (lowerMessage.includes('content') || lowerMessage.includes('blog')) {
+    intent.categories.push('content_creation');
+  }
+  if (lowerMessage.includes('seo') || lowerMessage.includes('rank')) {
+    intent.categories.push('seo_optimization');
+  }
+
+  return intent;
+}
+
+// Generate Smart Matching Integration
+async function generateSmartMatchingIntegration(intent, userId) {
+  return {
+    type: 'smart_matching_trigger',
+    title: '🎯 Get Personalized Recommendations',
+    description: 'Based on your question, I can find the perfect affiliate programs for you using our AI Smart Matching system.',
+    action: {
+      type: 'smart_matching',
+      endpoint: `/api/smart-matching/recommendations?user_id=${userId}&limit=5`,
+      button_text: 'Find My Perfect Programs',
+      follow_up: 'This will analyze your traffic, audience, and goals to recommend the highest-converting casino affiliate programs for your specific situation.'
+    },
+    quick_setup: {
+      message: "Don't have a profile yet? I can help you set one up in 2 minutes to get better recommendations.",
+      setup_url: '/smart-matching'
+    }
+  };
+}
+
+// Generate Platform Guidance
+function generatePlatformGuidance(intent) {
+  const guidance = {
+    type: 'platform_guidance',
+    title: '🚀 FlowLync Platform Guide',
+    features: []
+  };
+
+  guidance.features.push({
+    name: 'Smart Matching',
+    description: 'AI-powered system that finds the best affiliate programs for your specific situation',
+    link: '/smart-matching',
+    benefit: 'Save hours of research and find higher-converting programs'
+  });
+
+  guidance.features.push({
+    name: 'Performance Dashboard',
+    description: 'Track your affiliate performance and optimize your earnings',
+    link: '/dashboard',
+    benefit: 'Monitor what works and scale your best performers'
+  });
+
+  guidance.features.push({
+    name: 'AI Chat Assistant',
+    description: 'Get expert advice anytime with our specialized affiliate marketing AI',
+    link: '#chat',
+    benefit: 'Instant answers to your affiliate marketing questions'
+  });
+
+  return guidance;
+}
+
+// Generate User Profiling Questions
+function generateUserProfilingQuestions(intent) {
+  return {
+    type: 'user_profiling',
+    title: '💡 Help Me Understand Your Needs',
+    description: 'A few quick questions to give you better recommendations:',
+    questions: [
+      {
+        id: 'experience_level',
+        question: 'What\'s your experience with affiliate marketing?',
+        options: ['Complete beginner', '1-6 months experience', '6+ months experience', 'Expert (2+ years)']
+      },
+      {
+        id: 'traffic_source',
+        question: 'What\'s your main traffic source?',
+        options: ['Website/Blog', 'Social Media', 'YouTube', 'Email Marketing', 'Paid Ads', 'Other']
+      },
+      {
+        id: 'audience_location',
+        question: 'Where is most of your audience located?',
+        options: ['United States', 'United Kingdom', 'Canada', 'Europe', 'Global', 'Other']
+      }
+    ],
+    benefit: 'This helps me provide more targeted advice and better affiliate program recommendations.'
+  };
+}
+
+// Enhanced Groq Response with Platform Context
+async function getGroqResponse(message, intent) {
+  const systemPrompt = buildSystemPrompt(intent);
+  
+  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      model: 'llama-3.1-8b-instant',
+      messages: [{
+        role: 'system',
+        content: systemPrompt
+      }, {
+        role: 'user',
+        content: message
+      }],
+      max_tokens: 200,
+      temperature: 0.7
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Groq API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.choices[0].message.content.trim();
+}
+
+// Build context-aware system prompt
+function buildSystemPrompt(intent) {
+  let basePrompt = `You are an expert affiliate marketing consultant for FlowLync, a platform that helps marketers find and optimize casino affiliate programs using AI-powered Smart Matching technology.`;
+
+  if (intent.needsSmartMatching) {
+    basePrompt += ` The user seems interested in finding specific affiliate programs. You should encourage them to use FlowLync's Smart Matching system for personalized recommendations.`;
+  }
+
+  if (intent.needsPlatformGuidance) {
+    basePrompt += ` The user needs help with the FlowLync platform. Explain how our tools work and guide them to relevant features.`;
+  }
+
+  if (intent.userLevel === 'beginner') {
+    basePrompt += ` The user appears to be a beginner. Provide simple, step-by-step guidance.`;
+  } else if (intent.userLevel === 'advanced') {
+    basePrompt += ` The user seems experienced. Provide advanced strategies and technical details.`;
+  }
+
+  basePrompt += ` Keep responses concise but valuable (2-3 sentences max). Always end with a helpful suggestion or next step.`;
+
+  return basePrompt;
 }
 
 function generateAIResponse(message) {
