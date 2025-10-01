@@ -186,3 +186,17 @@ CREATE TRIGGER update_casinos_updated_at BEFORE UPDATE ON casinos FOR EACH ROW E
 CREATE TRIGGER update_affiliates_updated_at BEFORE UPDATE ON affiliates FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 CREATE TRIGGER update_user_preferences_updated_at BEFORE UPDATE ON user_preferences FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 CREATE TRIGGER update_smart_recommendations_updated_at BEFORE UPDATE ON smart_recommendations FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- Chat interactions table for AI assistant
+CREATE TABLE IF NOT EXISTS chat_interactions (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  user_query TEXT NOT NULL,
+  ai_response TEXT NOT NULL,
+  context JSONB DEFAULT '{}',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Create indexes for chat interactions
+CREATE INDEX IF NOT EXISTS idx_chat_interactions_user_id ON chat_interactions(user_id);
+CREATE INDEX IF NOT EXISTS idx_chat_interactions_created_at ON chat_interactions(created_at);
