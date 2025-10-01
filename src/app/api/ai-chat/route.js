@@ -78,35 +78,7 @@ export async function POST(request) {
   }
 }
 
-// FREE Groq API Implementation 
-async function getGroqResponse(message) {
-  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      model: 'llama-3.1-8b-instant', // Updated model name
-      messages: [{
-        role: 'system',
-        content: `You are an expert affiliate marketing consultant specializing in casino and gaming affiliate programs. Provide specific, actionable advice focused on: affiliate programs, content strategies, SEO techniques, traffic generation, compliance, and revenue optimization. Keep responses concise but valuable (2-3 sentences max).`
-      }, {
-        role: 'user',
-        content: message
-      }],
-      max_tokens: 200,
-      temperature: 0.7
-    })
-  });
-
-  if (!response.ok) {
-    throw new Error(`Groq API error: ${response.status}`);
-  }
-
-  const data = await response.json();
-  return data.choices[0].message.content.trim();
-}
+// Enhanced AI Response System
 
 // Advanced Pattern Matching (Always Available Fallback)
 function getAdvancedPatternResponse(message) {
