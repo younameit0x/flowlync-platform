@@ -5,17 +5,20 @@ export async function POST(request) {
     const { message } = body;
 
     if (!message) {
-      return new Response(JSON.stringify({ 
-        error: 'Message is required' 
-      }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      });
+      return new Response(
+        JSON.stringify({
+          error: "Message is required",
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        },
+      );
     }
 
     // Try multiple FREE AI providers with fallback
     let aiResponse;
-    
+
     try {
       // Option 1: Try Groq (free tier) - FASTEST
       aiResponse = await getGroqResponse(message);
@@ -29,53 +32,64 @@ export async function POST(request) {
       }
     }
 
-    return new Response(JSON.stringify({
-      response: aiResponse,
-      timestamp: new Date().toISOString(),
-      context: 'free_ai_assistant',
-      provider: 'multi_free_tier'
-    }), {
-      headers: { 'Content-Type': 'application/json' }
-    });
-
+    return new Response(
+      JSON.stringify({
+        response: aiResponse,
+        timestamp: new Date().toISOString(),
+        context: "free_ai_assistant",
+        provider: "multi_free_tier",
+      }),
+      {
+        headers: { "Content-Type": "application/json" },
+      },
+    );
   } catch (error) {
-    console.error('AI Chat error:', error);
-    return new Response(JSON.stringify({ 
-      error: 'Failed to process message'
-    }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    console.error("AI Chat error:", error);
+    return new Response(
+      JSON.stringify({
+        error: "Failed to process message",
+      }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      },
+    );
   }
 }
 
 // FREE Groq API Implementation
 async function getGroqResponse(message) {
-  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`, // FREE tier key
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      model: 'llama3-8b-8192', // FREE model
-      messages: [{
-        role: 'system',
-        content: `You are an expert affiliate marketing consultant specializing in casino and gaming affiliate programs. Provide actionable, specific advice focused on:
+  const response = await fetch(
+    "https://api.groq.com/openai/v1/chat/completions",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.GROQ_API_KEY}`, // FREE tier key
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "llama3-8b-8192", // FREE model
+        messages: [
+          {
+            role: "system",
+            content: `You are an expert affiliate marketing consultant specializing in casino and gaming affiliate programs. Provide actionable, specific advice focused on:
         - High-converting affiliate programs
         - Content strategies that drive traffic
         - SEO techniques for gambling niches
         - Compliance and regulations
         - Revenue optimization
-        Keep responses concise but valuable.`
-      }, {
-        role: 'user',
-        content: message
-      }],
-      max_tokens: 300,
-      temperature: 0.7
-    })
-  });
+        Keep responses concise but valuable.`,
+          },
+          {
+            role: "user",
+            content: message,
+          },
+        ],
+        max_tokens: 300,
+        temperature: 0.7,
+      }),
+    },
+  );
 
   const data = await response.json();
   return data.choices[0].message.content;
@@ -83,21 +97,24 @@ async function getGroqResponse(message) {
 
 // FREE Hugging Face Implementation
 async function getHuggingFaceResponse(message) {
-  const response = await fetch('https://api-inference.huggingface.co/models/microsoft/DialoGPT-large', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.HUGGINGFACE_API_KEY}`, // FREE
-      'Content-Type': 'application/json'
+  const response = await fetch(
+    "https://api-inference.huggingface.co/models/microsoft/DialoGPT-large",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.HUGGINGFACE_API_KEY}`, // FREE
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        inputs: `Affiliate Marketing Expert: ${message}`,
+        parameters: {
+          max_length: 200,
+          temperature: 0.7,
+          return_full_text: false,
+        },
+      }),
     },
-    body: JSON.stringify({
-      inputs: `Affiliate Marketing Expert: ${message}`,
-      parameters: {
-        max_length: 200,
-        temperature: 0.7,
-        return_full_text: false
-      }
-    })
-  });
+  );
 
   const data = await response.json();
   return data[0].generated_text;
@@ -106,7 +123,7 @@ async function getHuggingFaceResponse(message) {
 // Smart Pattern Matching (No API needed)
 function getSmartPatternResponse(message) {
   const lowerMessage = message.toLowerCase();
-  
+
   // Advanced pattern matching with context awareness
   const responses = {
     affiliate: [
@@ -120,14 +137,21 @@ function getSmartPatternResponse(message) {
     seo: [
       "SEO strategy for casino affiliates: Target location-specific keywords ('best online casinos [country]'), create pillar content around main topics, build quality backlinks from finance/gambling sites. Focus on E-A-T (Expertise, Authority, Trust).",
       "Rank higher in casino affiliate space: Use schema markup for reviews, optimize for featured snippets, create comprehensive comparison pages. Target keywords with commercial intent and manageable competition.",
-    ]
+    ],
   };
 
-  if (lowerMessage.includes('affiliate') || lowerMessage.includes('program')) {
-    return responses.affiliate[Math.floor(Math.random() * responses.affiliate.length)];
-  } else if (lowerMessage.includes('content') || lowerMessage.includes('blog')) {
-    return responses.content[Math.floor(Math.random() * responses.content.length)];
-  } else if (lowerMessage.includes('seo') || lowerMessage.includes('rank')) {
+  if (lowerMessage.includes("affiliate") || lowerMessage.includes("program")) {
+    return responses.affiliate[
+      Math.floor(Math.random() * responses.affiliate.length)
+    ];
+  } else if (
+    lowerMessage.includes("content") ||
+    lowerMessage.includes("blog")
+  ) {
+    return responses.content[
+      Math.floor(Math.random() * responses.content.length)
+    ];
+  } else if (lowerMessage.includes("seo") || lowerMessage.includes("rank")) {
     return responses.seo[Math.floor(Math.random() * responses.seo.length)];
   }
 
@@ -135,12 +159,19 @@ function getSmartPatternResponse(message) {
 }
 
 export async function GET() {
-  return new Response(JSON.stringify({
-    status: 'FREE AI Chat API - Multi-Provider',
-    providers: ['Groq (free)', 'Hugging Face (free)', 'Smart Pattern Matching'],
-    features: ['Real AI responses', 'Fallback system', 'Zero cost'],
-    timestamp: new Date().toISOString()
-  }), {
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return new Response(
+    JSON.stringify({
+      status: "FREE AI Chat API - Multi-Provider",
+      providers: [
+        "Groq (free)",
+        "Hugging Face (free)",
+        "Smart Pattern Matching",
+      ],
+      features: ["Real AI responses", "Fallback system", "Zero cost"],
+      timestamp: new Date().toISOString(),
+    }),
+    {
+      headers: { "Content-Type": "application/json" },
+    },
+  );
 }

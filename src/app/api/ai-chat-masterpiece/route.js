@@ -1,11 +1,11 @@
-import { createClient } from '@supabase/supabase-js';
-import { NextResponse } from 'next/server';
+import { createClient } from "@supabase/supabase-js";
+import { NextResponse } from "next/server";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!supabaseUrl || !supabaseServiceKey) {
-  throw new Error('Missing Supabase environment variables');
+  throw new Error("Missing Supabase environment variables");
 }
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
@@ -15,7 +15,8 @@ class MasterpieceAIChatAssistant {
   constructor() {
     this.aiPersona = {
       name: "Dr. Alexandra Sterling",
-      title: "PhD in Digital Marketing & AI, 15+ Years Affiliate Marketing Experience",
+      title:
+        "PhD in Digital Marketing & AI, 15+ Years Affiliate Marketing Experience",
       expertise: [
         "Advanced Affiliate Marketing Strategies",
         "AI-Powered Content Optimization",
@@ -23,19 +24,21 @@ class MasterpieceAIChatAssistant {
         "SEO & Traffic Generation",
         "Conversion Rate Optimization",
         "Market Trend Analysis",
-        "Competitive Intelligence"
+        "Competitive Intelligence",
       ],
       personality: {
-        style: "Professional yet approachable, data-driven with actionable insights",
-        communication: "Clear, concise, and encouraging with real-world examples",
-        focus: "Results-oriented with measurable outcomes"
+        style:
+          "Professional yet approachable, data-driven with actionable insights",
+        communication:
+          "Clear, concise, and encouraging with real-world examples",
+        focus: "Results-oriented with measurable outcomes",
       },
       credentials: [
         "PhD Digital Marketing (MIT)",
         "Former Head of Affiliates at Fortune 500 Casino",
         "Published 50+ papers on AI in Marketing",
-        "Generated $500M+ in affiliate revenue"
-      ]
+        "Generated $500M+ in affiliate revenue",
+      ],
     };
 
     this.aiCapabilities = {
@@ -46,24 +49,24 @@ class MasterpieceAIChatAssistant {
       competitiveAnalysis: true,
       trendPrediction: true,
       imageGeneration: true,
-      codeReview: false // Future feature
+      codeReview: false, // Future feature
     };
 
     this.freeAIProviders = [
       {
-        name: 'huggingface',
-        url: 'https://api-inference.huggingface.co/models/microsoft/DialoGPT-large',
-        model: 'advanced_conversational_ai',
+        name: "huggingface",
+        url: "https://api-inference.huggingface.co/models/microsoft/DialoGPT-large",
+        model: "advanced_conversational_ai",
         cost: 0,
-        rateLimit: '1000 requests/month'
+        rateLimit: "1000 requests/month",
       },
       {
-        name: 'replicate',
-        url: 'https://api.replicate.com/v1/predictions',
-        model: 'llama_2_70b_chat',
+        name: "replicate",
+        url: "https://api.replicate.com/v1/predictions",
+        model: "llama_2_70b_chat",
         cost: 0,
-        rateLimit: 'Free tier available'
-      }
+        rateLimit: "Free tier available",
+      },
     ];
   }
 
@@ -74,21 +77,38 @@ class MasterpieceAIChatAssistant {
       const queryAnalysis = await this.analyzeQueryIntent(query);
 
       // Step 2: Gather contextual data from multiple sources
-      const contextualData = await this.gatherContextualData(query, queryAnalysis);
+      const contextualData = await this.gatherContextualData(
+        query,
+        queryAnalysis,
+      );
 
       // Step 3: Generate response using best AI model available
-      const aiResponse = await this.generateAIResponse(query, contextualData, queryAnalysis);
+      const aiResponse = await this.generateAIResponse(
+        query,
+        contextualData,
+        queryAnalysis,
+      );
 
       // Step 4: Enhance response with platform-specific actions
-      const enhancedResponse = await this.enhanceWithPlatformIntegration(aiResponse, query, contextualData);
+      const enhancedResponse = await this.enhanceWithPlatformIntegration(
+        aiResponse,
+        query,
+        contextualData,
+      );
 
       // Step 5: Add actionable next steps and recommendations
-      const finalResponse = await this.addActionableRecommendations(enhancedResponse, query, contextualData);
+      const finalResponse = await this.addActionableRecommendations(
+        enhancedResponse,
+        query,
+        contextualData,
+      );
 
       return finalResponse;
-
     } catch (error) {
-      console.log('Masterpiece AI error, using advanced fallback:', error.message);
+      console.log(
+        "Masterpiece AI error, using advanced fallback:",
+        error.message,
+      );
       return await this.generateAdvancedFallback(query, context);
     }
   }
@@ -97,44 +117,64 @@ class MasterpieceAIChatAssistant {
   async analyzeQueryIntent(query) {
     const lowerQuery = query.toLowerCase();
     const intent = {
-      type: 'general',
-      urgency: 'normal',
-      complexity: 'simple',
+      type: "general",
+      urgency: "normal",
+      complexity: "simple",
       requiresWebSearch: false,
       requiresPlatformData: false,
       requiresContentGeneration: false,
-      requiresSEOAnalysis: false
+      requiresSEOAnalysis: false,
     };
 
     // Determine query type and requirements
-    if (lowerQuery.includes('search') || lowerQuery.includes('find') || lowerQuery.includes('latest')) {
-      intent.type = 'search';
+    if (
+      lowerQuery.includes("search") ||
+      lowerQuery.includes("find") ||
+      lowerQuery.includes("latest")
+    ) {
+      intent.type = "search";
       intent.requiresWebSearch = true;
-      intent.urgency = 'high';
+      intent.urgency = "high";
     }
 
-    if (lowerQuery.includes('content') || lowerQuery.includes('blog') || lowerQuery.includes('write')) {
-      intent.type = 'content';
+    if (
+      lowerQuery.includes("content") ||
+      lowerQuery.includes("blog") ||
+      lowerQuery.includes("write")
+    ) {
+      intent.type = "content";
       intent.requiresContentGeneration = true;
-      intent.complexity = 'complex';
+      intent.complexity = "complex";
     }
 
-    if (lowerQuery.includes('seo') || lowerQuery.includes('rank') || lowerQuery.includes('google')) {
-      intent.type = 'seo';
+    if (
+      lowerQuery.includes("seo") ||
+      lowerQuery.includes("rank") ||
+      lowerQuery.includes("google")
+    ) {
+      intent.type = "seo";
       intent.requiresSEOAnalysis = true;
-      intent.complexity = 'advanced';
+      intent.complexity = "advanced";
     }
 
-    if (lowerQuery.includes('recommend') || lowerQuery.includes('suggest') || lowerQuery.includes('best')) {
-      intent.type = 'recommendation';
+    if (
+      lowerQuery.includes("recommend") ||
+      lowerQuery.includes("suggest") ||
+      lowerQuery.includes("best")
+    ) {
+      intent.type = "recommendation";
       intent.requiresPlatformData = true;
-      intent.complexity = 'moderate';
+      intent.complexity = "moderate";
     }
 
-    if (lowerQuery.includes('commission') || lowerQuery.includes('earn') || lowerQuery.includes('revenue')) {
-      intent.type = 'monetization';
+    if (
+      lowerQuery.includes("commission") ||
+      lowerQuery.includes("earn") ||
+      lowerQuery.includes("revenue")
+    ) {
+      intent.type = "monetization";
       intent.requiresPlatformData = true;
-      intent.urgency = 'high';
+      intent.urgency = "high";
     }
 
     return intent;
@@ -147,7 +187,7 @@ class MasterpieceAIChatAssistant {
       webSearchResults: null,
       seoData: null,
       competitiveData: null,
-      trendData: null
+      trendData: null,
     };
 
     try {
@@ -171,9 +211,8 @@ class MasterpieceAIChatAssistant {
 
       // Get trend data
       data.trendData = await this.getTrendInsights(query);
-
     } catch (error) {
-      console.log('Error gathering contextual data:', error.message);
+      console.log("Error gathering contextual data:", error.message);
     }
 
     return data;
@@ -183,7 +222,7 @@ class MasterpieceAIChatAssistant {
   async performWebSearch(query) {
     try {
       // Using a free search API (you can replace with actual free search service)
-      const searchQuery = encodeURIComponent(query + ' affiliate marketing');
+      const searchQuery = encodeURIComponent(query + " affiliate marketing");
 
       // For demo purposes, we'll simulate web search results
       // In production, integrate with free search APIs like:
@@ -196,20 +235,19 @@ class MasterpieceAIChatAssistant {
           title: `Latest ${query} Trends in Affiliate Marketing`,
           snippet: `According to recent data, ${query} shows strong growth in the affiliate marketing sector...`,
           url: `https://example.com/search/${searchQuery}`,
-          source: 'affiliate-marketing-trends.com'
+          source: "affiliate-marketing-trends.com",
         },
         {
           title: `Best Practices for ${query} in 2025`,
           snippet: `Industry experts recommend focusing on ${query} for maximum affiliate revenue...`,
           url: `https://example.com/best-practices/${searchQuery}`,
-          source: 'affiliate-experts.com'
-        }
+          source: "affiliate-experts.com",
+        },
       ];
 
       return mockSearchResults;
-
     } catch (error) {
-      console.log('Web search error:', error.message);
+      console.log("Web search error:", error.message);
       return [];
     }
   }
@@ -220,17 +258,17 @@ class MasterpieceAIChatAssistant {
       keywordDifficulty: Math.floor(Math.random() * 100),
       searchVolume: Math.floor(Math.random() * 10000) + 1000,
       relatedKeywords: [
-        query + ' tips',
-        'best ' + query,
-        query + ' guide',
-        query + ' strategies'
+        query + " tips",
+        "best " + query,
+        query + " guide",
+        query + " strategies",
       ],
       contentRecommendations: [
-        'Create comprehensive guides with actionable advice',
-        'Include data and statistics to build authority',
-        'Optimize for featured snippets with clear answers',
-        'Use internal linking to related affiliate content'
-      ]
+        "Create comprehensive guides with actionable advice",
+        "Include data and statistics to build authority",
+        "Optimize for featured snippets with clear answers",
+        "Use internal linking to related affiliate content",
+      ],
     };
 
     return seoInsights;
@@ -240,20 +278,20 @@ class MasterpieceAIChatAssistant {
   async getCompetitiveInsights(query) {
     return {
       topCompetitors: [
-        'affiliate-marketing-pro.com',
-        'casino-affiliates-expert.com',
-        'igaming-partners.net'
+        "affiliate-marketing-pro.com",
+        "casino-affiliates-expert.com",
+        "igaming-partners.net",
       ],
       marketShare: {
-        primary: '35% - Established affiliate networks',
-        secondary: '25% - Independent affiliate sites',
-        emerging: '40% - New AI-powered platforms'
+        primary: "35% - Established affiliate networks",
+        secondary: "25% - Independent affiliate sites",
+        emerging: "40% - New AI-powered platforms",
       },
       opportunities: [
-        'Niche affiliate programs with less competition',
-        'AI-powered content optimization',
-        'Mobile-first affiliate strategies'
-      ]
+        "Niche affiliate programs with less competition",
+        "AI-powered content optimization",
+        "Mobile-first affiliate strategies",
+      ],
     };
   }
 
@@ -261,17 +299,17 @@ class MasterpieceAIChatAssistant {
   async getTrendInsights(query) {
     return {
       trendingTopics: [
-        'AI-powered affiliate marketing',
-        'Mobile casino affiliate programs',
-        'Cryptocurrency casino affiliates',
-        'Social media affiliate strategies'
+        "AI-powered affiliate marketing",
+        "Mobile casino affiliate programs",
+        "Cryptocurrency casino affiliates",
+        "Social media affiliate strategies",
       ],
-      growthRate: '23% YoY in affiliate marketing sector',
+      growthRate: "23% YoY in affiliate marketing sector",
       emergingOpportunities: [
-        'Voice search optimization for affiliate content',
-        'Video affiliate marketing strategies',
-        'Influencer-affiliate hybrid models'
-      ]
+        "Voice search optimization for affiliate content",
+        "Video affiliate marketing strategies",
+        "Influencer-affiliate hybrid models",
+      ],
     };
   }
 
@@ -280,19 +318,19 @@ class MasterpieceAIChatAssistant {
     // Enhanced context for AI model
     const systemPrompt = `You are ${this.aiPersona.name}, ${this.aiPersona.title}.
 
-EXPERTISE: ${this.aiPersona.expertise.join(', ')}
+EXPERTISE: ${this.aiPersona.expertise.join(", ")}
 PERSONALITY: ${this.aiPersona.personality.style}
-CREDENTIALS: ${this.aiPersona.credentials.join(', ')}
+CREDENTIALS: ${this.aiPersona.credentials.join(", ")}
 
 CURRENT QUERY: "${query}"
 QUERY INTENT: ${intent.type} (${intent.complexity} complexity)
 URGENCY: ${intent.urgency}
 
 CONTEXTUAL DATA:
-${contextualData.platformData ? 'Platform Data: ' + JSON.stringify(contextualData.platformData) : 'No platform data available'}
-${contextualData.webSearchResults ? 'Web Search: ' + JSON.stringify(contextualData.webSearchResults) : 'No web search data'}
-${contextualData.seoData ? 'SEO Data: ' + JSON.stringify(contextualData.seoData) : 'No SEO data'}
-${contextualData.trendData ? 'Trends: ' + JSON.stringify(contextualData.trendData) : 'No trend data'}
+${contextualData.platformData ? "Platform Data: " + JSON.stringify(contextualData.platformData) : "No platform data available"}
+${contextualData.webSearchResults ? "Web Search: " + JSON.stringify(contextualData.webSearchResults) : "No web search data"}
+${contextualData.seoData ? "SEO Data: " + JSON.stringify(contextualData.seoData) : "No SEO data"}
+${contextualData.trendData ? "Trends: " + JSON.stringify(contextualData.trendData) : "No trend data"}
 
 Provide a comprehensive, actionable response that:
 1. Directly addresses the user's specific need
@@ -305,31 +343,36 @@ Response should be helpful, accurate, and immediately valuable.`;
 
     try {
       // Try Hugging Face first (free)
-      const response = await fetch('https://api-inference.huggingface.co/models/microsoft/DialoGPT-large', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${process.env.HUGGINGFACE_API_KEY || 'hf_xxxxxxxxxxxxxxxxxxxxxxxxx'}`,
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        "https://api-inference.huggingface.co/models/microsoft/DialoGPT-large",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${process.env.HUGGINGFACE_API_KEY || "hf_xxxxxxxxxxxxxxxxxxxxxxxxx"}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            inputs: systemPrompt,
+            parameters: {
+              max_length: 300,
+              temperature: 0.7,
+              do_sample: true,
+              top_p: 0.9,
+              repetition_penalty: 1.2,
+            },
+          }),
         },
-        body: JSON.stringify({
-          inputs: systemPrompt,
-          parameters: {
-            max_length: 300,
-            temperature: 0.7,
-            do_sample: true,
-            top_p: 0.9,
-            repetition_penalty: 1.2
-          }
-        }),
-      });
+      );
 
       if (response.ok) {
         const data = await response.json();
-        return data[0]?.generated_text || this.generateAdvancedTemplateResponse(query, intent, contextualData);
+        return (
+          data[0]?.generated_text ||
+          this.generateAdvancedTemplateResponse(query, intent, contextualData)
+        );
       }
-
     } catch (error) {
-      console.log('Advanced AI API error:', error.message);
+      console.log("Advanced AI API error:", error.message);
     }
 
     // Fallback to advanced template
@@ -340,7 +383,7 @@ Response should be helpful, accurate, and immediately valuable.`;
   generateAdvancedTemplateResponse(query, intent, contextualData) {
     const lowerQuery = query.toLowerCase();
 
-    if (intent.type === 'search') {
+    if (intent.type === "search") {
       return `Based on current market research, here are the latest insights about "${query}":
 
 📊 **Market Trends:**
@@ -361,7 +404,7 @@ Response should be helpful, accurate, and immediately valuable.`;
 Would you like me to dive deeper into any of these areas or help you implement these strategies?`;
     }
 
-    if (intent.type === 'content') {
+    if (intent.type === "content") {
       return `Excellent question about content strategy! As a content creator, your affiliate success depends on three pillars:
 
 🎯 **Content Strategy Framework:**
@@ -383,12 +426,12 @@ Would you like me to dive deeper into any of these areas or help you implement t
 I can help you generate specific content ideas or analyze your current content strategy. What type of content are you focusing on?`;
     }
 
-    if (intent.type === 'seo') {
+    if (intent.type === "seo") {
       return `SEO optimization is crucial for affiliate marketing success. Here's my data-driven approach:
 
 📊 **Current SEO Landscape:**
 • Keyword difficulty: Moderate (based on competition analysis)
-• Search volume: ${contextualData.seoData?.searchVolume || '5,000-10,000'} monthly searches
+• Search volume: ${contextualData.seoData?.searchVolume || "5,000-10,000"} monthly searches
 • Competition level: High in affiliate marketing niche
 
 🎯 **Optimization Strategy:**
@@ -409,7 +452,7 @@ I can help you generate specific content ideas or analyze your current content s
 Would you like me to analyze a specific piece of content or help you develop an SEO strategy for your affiliate site?`;
     }
 
-    if (intent.type === 'monetization') {
+    if (intent.type === "monetization") {
       return `Commission optimization is my specialty! Let's maximize your affiliate revenue:
 
 💰 **Commission Analysis:**
@@ -460,7 +503,10 @@ What specific aspect of affiliate marketing would you like to focus on? I'm here
     }
 
     // Add blogger platform integration
-    if (query.toLowerCase().includes('content') || query.toLowerCase().includes('blog')) {
+    if (
+      query.toLowerCase().includes("content") ||
+      query.toLowerCase().includes("blog")
+    ) {
       enhanced += `\n\n✍️ **Content Tools:** The Blogger Hub at /blogger-dashboard provides AI-powered content creation tools, SEO optimization, and community features to accelerate your affiliate marketing success.`;
     }
 
@@ -477,32 +523,35 @@ What specific aspect of affiliate marketing would you like to focus on? I'm here
     const recommendations = [];
 
     // Add specific actionable items based on query type
-    if (query.toLowerCase().includes('content')) {
+    if (query.toLowerCase().includes("content")) {
       recommendations.push(
         "📝 Create a 'Best Casino Bonuses 2025' comparison post",
         "🎯 Target long-tail keywords like 'best casino affiliate programs for beginners'",
-        "📊 Track content performance and optimize based on conversion data"
+        "📊 Track content performance and optimize based on conversion data",
       );
     }
 
-    if (query.toLowerCase().includes('seo')) {
+    if (query.toLowerCase().includes("seo")) {
       recommendations.push(
         "🔍 Research competitor content and identify content gaps",
         "📱 Optimize for mobile (65% of affiliate traffic is mobile)",
-        "🔗 Build internal linking structure for better SEO"
+        "🔗 Build internal linking structure for better SEO",
       );
     }
 
-    if (query.toLowerCase().includes('commission') || query.toLowerCase().includes('revenue')) {
+    if (
+      query.toLowerCase().includes("commission") ||
+      query.toLowerCase().includes("revenue")
+    ) {
       recommendations.push(
         "💰 Audit current affiliate programs for commission optimization",
         "📈 Focus on high-converting traffic sources",
-        "🎯 Set up conversion tracking to measure ROI"
+        "🎯 Set up conversion tracking to measure ROI",
       );
     }
 
     if (recommendations.length > 0) {
-      return `${response}\n\n🚀 **Immediate Action Items:**\n${recommendations.map(rec => `• ${rec}`).join('\n')}`;
+      return `${response}\n\n🚀 **Immediate Action Items:**\n${recommendations.map((rec) => `• ${rec}`).join("\n")}`;
     }
 
     return response;
@@ -513,15 +562,18 @@ What specific aspect of affiliate marketing would you like to focus on? I'm here
     // Use enhanced knowledge base with professional responses
     const lowerQuery = query.toLowerCase();
 
-    if (lowerQuery.includes('web search') || lowerQuery.includes('search web')) {
+    if (
+      lowerQuery.includes("web search") ||
+      lowerQuery.includes("search web")
+    ) {
       return "I can perform web searches to find the latest affiliate marketing trends, program updates, and industry news. For example, I can search for 'latest casino affiliate commission rates' or 'best affiliate programs 2025'. What specific information are you looking for?";
     }
 
-    if (lowerQuery.includes('analyze') || lowerQuery.includes('research')) {
+    if (lowerQuery.includes("analyze") || lowerQuery.includes("research")) {
       return "I can analyze affiliate programs, content strategies, and market trends using current data. For instance, I can research commission rates, program reliability, or content performance metrics. What would you like me to analyze for you?";
     }
 
-    if (lowerQuery.includes('generate') || lowerQuery.includes('create')) {
+    if (lowerQuery.includes("generate") || lowerQuery.includes("create")) {
       return "I can generate content ideas, email sequences, social media posts, and affiliate marketing strategies. I can also help create SEO-optimized titles, meta descriptions, and content outlines. What would you like me to generate?";
     }
 
@@ -549,16 +601,17 @@ What specific challenge or opportunity would you like to explore? I'm here to pr
   async getPlatformContext(query) {
     try {
       const [recommendations, preferences, interactions] = await Promise.all([
-        supabase.from('smart_recommendations').select('*').limit(5),
-        supabase.from('user_preferences').select('*').limit(1),
-        supabase.from('recommendation_interactions').select('*').limit(10)
+        supabase.from("smart_recommendations").select("*").limit(5),
+        supabase.from("user_preferences").select("*").limit(1),
+        supabase.from("recommendation_interactions").select("*").limit(10),
       ]);
 
       return {
         recommendations: recommendations.data || [],
         preferences: preferences.data?.[0] || null,
         interactions: interactions.data || [],
-        hasActiveRecommendations: (recommendations.data && recommendations.data.length > 0)
+        hasActiveRecommendations:
+          recommendations.data && recommendations.data.length > 0,
       };
     } catch (error) {
       return { recommendations: [], preferences: null, interactions: [] };
@@ -574,8 +627,8 @@ export async function POST(request) {
 
     if (!message) {
       return NextResponse.json(
-        { error: 'Message is required' },
-        { status: 400 }
+        { error: "Message is required" },
+        { status: 400 },
       );
     }
 
@@ -584,31 +637,37 @@ export async function POST(request) {
 
     // Save masterpiece interaction
     try {
-      await supabase
-        .from('chat_interactions')
-        .insert([{
+      await supabase.from("chat_interactions").insert([
+        {
           user_query: message,
           ai_response: response,
-          context: { ...context, masterpiece: true, aiPersona: 'Dr_Alexandra_Sterling' },
-          created_at: new Date().toISOString()
-        }]);
+          context: {
+            ...context,
+            masterpiece: true,
+            aiPersona: "Dr_Alexandra_Sterling",
+          },
+          created_at: new Date().toISOString(),
+        },
+      ]);
     } catch (dbError) {
-      console.log('Could not save masterpiece chat interaction:', dbError.message);
+      console.log(
+        "Could not save masterpiece chat interaction:",
+        dbError.message,
+      );
     }
 
     return NextResponse.json({
       response,
       timestamp: new Date().toISOString(),
-      context: 'masterpiece_ai_assistant',
-      aiPersona: 'Dr_Alexandra_Sterling',
-      capabilities: 'web_search_content_seo_analysis'
+      context: "masterpiece_ai_assistant",
+      aiPersona: "Dr_Alexandra_Sterling",
+      capabilities: "web_search_content_seo_analysis",
     });
-
   } catch (error) {
-    console.error('Error in masterpiece AI chat:', error);
+    console.error("Error in masterpiece AI chat:", error);
     return NextResponse.json(
-      { error: 'Failed to process masterpiece chat message' },
-      { status: 500 }
+      { error: "Failed to process masterpiece chat message" },
+      { status: 500 },
     );
   }
 }

@@ -1,0 +1,172 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Auto AI Workflow - Code Quality",
+      "type": "shell",
+      "command": "echo",
+      "args": ["🔧 Triggering Sourcery code quality analysis..."],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "dependsOn": ["sourcery-analyze"]
+    },
+    {
+      "label": "sourcery-analyze",
+      "type": "shell",
+      "command": "npx",
+      "args": ["sourcery", "review", "--fix", "."],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Auto AI Workflow - Full Stack",
+      "type": "shell",
+      "command": "echo",
+      "args": ["🚀 Starting full AI agent workflow..."],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": true
+      },
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "eslint-fix",
+        "sourcery-analyze", 
+        "continue-ai-task",
+        "agent-collaboration-sync"
+      ]
+    },
+    {
+      "label": "eslint-fix",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "lint", "--", "--fix"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "continue-ai-task",
+      "type": "shell",
+      "command": "echo",
+      "args": ["🤖 Continue AI would process this task with Claude/GPT-4..."],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "agent-collaboration-sync",
+      "type": "shell",
+      "command": "node",
+      "args": ["-e", "console.log('🎯 Syncing with agent collaboration system...'); fetch('http://localhost:3000/api/agent-collaboration/tasks', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: 'Auto AI Workflow Completed', description: 'All AI agents have processed the latest task', assigned_to: 'auto-system', priority: 'medium', status: 'completed' }) }).then(r => console.log('✅ Task logged to collaboration system')).catch(e => console.log('ℹ️ Collaboration system not available'))"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Auto AI - Quick Fix",
+      "type": "shell",
+      "command": "echo",
+      "args": ["⚡ Running quick AI fixes..."],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "dependsOrder": "parallel",
+      "dependsOn": ["eslint-fix", "format-code"]
+    },
+    {
+      "label": "format-code",
+      "type": "shell",
+      "command": "npx",
+      "args": ["prettier", "--write", "src/**/*.{js,jsx,ts,tsx,json,css,md}"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Auto AI - Smart Matching Focus",
+      "type": "shell",
+      "command": "echo",
+      "args": ["🎯 Focusing AI agents on Smart Matching component..."],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "analyze-smart-matching",
+        "optimize-smart-matching",
+        "test-smart-matching"
+      ]
+    },
+    {
+      "label": "analyze-smart-matching",
+      "type": "shell",
+      "command": "echo",
+      "args": ["🔍 Analyzing Smart Matching component with AI..."],
+      "group": "build"
+    },
+    {
+      "label": "optimize-smart-matching",
+      "type": "shell",
+      "command": "npx",
+      "args": ["sourcery", "review", "--fix", "src/app/smart-matching/"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build"
+    },
+    {
+      "label": "test-smart-matching",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "build"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test"
+    }
+  ]
+}

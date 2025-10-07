@@ -1,44 +1,48 @@
 // API Route: /api/agent-collaboration/communications
 // For agent-to-agent messaging and coordination
 
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
 );
 
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
-    const agentName = searchParams.get('agent');
-    const messageType = searchParams.get('type');
-    const unreadOnly = searchParams.get('unread') === 'true';
-    const conversationId = searchParams.get('conversation');
+    const agentName = searchParams.get("agent");
+    const messageType = searchParams.get("type");
+    const unreadOnly = searchParams.get("unread") === "true";
+    const conversationId = searchParams.get("conversation");
 
     let query = supabase
-      .from('agent_communications')
-      .select('*')
-      .order('created_at', { ascending: false });
+      .from("agent_communications")
+      .select("*")
+      .order("created_at", { ascending: false });
 
     // Filter by agent (messages to/from this agent)
     if (agentName) {
-      query = query.or(`from_agent.eq.${agentName},to_agent.eq.${agentName},to_agent.is.null`);
+      query = query.or(
+        `from_agent.eq.${agentName},to_agent.eq.${agentName},to_agent.is.null`,
+      );
     }
 
     // Filter by message type
     if (messageType) {
-      query = query.eq('message_type', messageType);
+      query = query.eq("message_type", messageType);
     }
 
     // Filter unread messages
     if (unreadOnly) {
-      query = query.eq('read_status', false);
+      query = query.eq("read_status", false);
     }
 
     // Filter by conversation thread
     if (conversationId) {
-      query = query.or(`id.eq.${conversationId},replied_to.eq.${conversationId}`);
+      query = query.or(
+        `id.eq.${conversationId},replied_to.eq.${conversationId}`,
+      );
     }
 
     const { data: messages, error } = await query.limit(100);
@@ -50,18 +54,17 @@ export async function GET(request) {
     return Response.json({
       success: true,
       messages: messages || [],
-      count: messages?.length || 0
+      count: messages?.length || 0,
     });
-
   } catch (error) {
-    console.error('Error fetching agent communications:', error);
+    console.error("Error fetching agent communications:", error);
     return Response.json(
-      { 
-        success: false, 
-        error: 'Failed to fetch agent communications',
-        details: error.message 
+      {
+        success: false,
+        error: "Failed to fetch agent communications",
+        details: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -77,24 +80,24 @@ export async function POST(request) {
       message,
       related_task_id,
       related_note_id,
-      priority = 'normal',
+      priority = "normal",
       replied_to,
-      metadata = {}
+      metadata = {},
     } = body;
 
     // Validate required fields
     if (!from_agent || !message_type || !message) {
       return Response.json(
-        { 
-          success: false, 
-          error: 'Missing required fields: from_agent, message_type, message' 
+        {
+          success: false,
+          error: "Missing required fields: from_agent, message_type, message",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const { data: communication, error } = await supabase
-      .from('agent_communications')
+      .from("agent_communications")
       .insert({
         from_agent,
         to_agent,
@@ -105,7 +108,7 @@ export async function POST(request) {
         related_note_id,
         priority,
         replied_to,
-        metadata
+        metadata,
       })
       .select()
       .single();
@@ -117,18 +120,17 @@ export async function POST(request) {
     return Response.json({
       success: true,
       communication,
-      message: 'Message sent successfully'
+      message: "Message sent successfully",
     });
-
   } catch (error) {
-    console.error('Error creating agent communication:', error);
+    console.error("Error creating agent communication:", error);
     return Response.json(
-      { 
-        success: false, 
-        error: 'Failed to send message',
-        details: error.message 
+      {
+        success: false,
+        error: "Failed to send message",
+        details: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -140,15 +142,15 @@ export async function PUT(request) {
 
     if (!id) {
       return Response.json(
-        { success: false, error: 'Message ID is required for updates' },
-        { status: 400 }
+        { success: false, error: "Message ID is required for updates" },
+        { status: 400 },
       );
     }
 
     const { data: communication, error } = await supabase
-      .from('agent_communications')
+      .from("agent_communications")
       .update(updates)
-      .eq('id', id)
+      .eq("id", id)
       .select()
       .single();
 
@@ -159,18 +161,17 @@ export async function PUT(request) {
     return Response.json({
       success: true,
       communication,
-      message: 'Message updated successfully'
+      message: "Message updated successfully",
     });
-
   } catch (error) {
-    console.error('Error updating agent communication:', error);
+    console.error("Error updating agent communication:", error);
     return Response.json(
-      { 
-        success: false, 
-        error: 'Failed to update message',
-        details: error.message 
+      {
+        success: false,
+        error: "Failed to update message",
+        details: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

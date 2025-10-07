@@ -4,25 +4,26 @@
 
 export async function POST(request) {
   try {
-    const { email, name, role, experience, company, investment_range } = await request.json()
-    
+    const { email, name, role, experience, company, investment_range } =
+      await request.json();
+
     // Validate required fields
-    if (!email || !email.includes('@')) {
+    if (!email || !email.includes("@")) {
       return Response.json(
-        { error: 'Valid email is required' }, 
-        { status: 400 }
-      )
+        { error: "Valid email is required" },
+        { status: 400 },
+      );
     }
 
     if (!name || name.trim().length < 2) {
       return Response.json(
-        { error: 'Name is required (at least 2 characters)' }, 
-        { status: 400 }
-      )
+        { error: "Name is required (at least 2 characters)" },
+        { status: 400 },
+      );
     }
 
     // Role is now embedded in the form, so it should always be present
-    const userRole = role || 'affiliate' // fallback to affiliate if not specified
+    const userRole = role || "affiliate"; // fallback to affiliate if not specified
 
     // Simulate successful database save
     // In production, this would save to Supabase database
@@ -34,27 +35,26 @@ export async function POST(request) {
       experience,
       company,
       investment_range,
-      created_at: new Date().toISOString()
-    }
+      created_at: new Date().toISOString(),
+    };
 
     // Log successful signup for monitoring (in production, this would go to database)
-    console.log('✅ New FlowLync signup:', mockUserData)
+    console.log("✅ New FlowLync signup:", mockUserData);
 
     // Return success response
     return Response.json(
-      { 
-        message: 'Successfully joined FlowLync early access! 🎉',
+      {
+        message: "Successfully joined FlowLync early access! 🎉",
         success: true,
-        data: mockUserData 
-      }, 
-      { status: 200 }
-    )
-    
+        data: mockUserData,
+      },
+      { status: 200 },
+    );
   } catch (error) {
-    console.error('❌ Signup API error:', error)
+    console.error("❌ Signup API error:", error);
     return Response.json(
-      { error: 'Something went wrong. Please try again.' }, 
-      { status: 500 }
-    )
+      { error: "Something went wrong. Please try again." },
+      { status: 500 },
+    );
   }
 }
